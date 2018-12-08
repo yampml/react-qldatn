@@ -17,13 +17,20 @@ import dashboardRoutes from "routes/dashboard.jsx";
 import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx";
 
 import image from "assets/img/bkdn.jpg";
-import logo from "assets/img/reactlogo.png";
+import logo from "assets/img/logobkdn.png";
 
 const switchRoutes = (
   <Switch>
     {dashboardRoutes.map((prop, key) => {
+      if (prop.slash) return;
       if (prop.redirect)
-        return <Redirect from={prop.path} to={prop.to} key={key} />;
+        return <Redirect from={prop.path} to={prop.to} key={"child" + key} />;
+      if (prop.childLink) {
+        return prop.childLink.map((childLinkProp, childKey) => {
+          
+          return <Route path={childLinkProp.path} component={childLinkProp.component} key={childKey} />
+        })
+      }
       return <Route path={prop.path} component={prop.component} key={key} />;
     })}
   </Switch>
@@ -58,6 +65,9 @@ class App extends React.Component {
     window.addEventListener("resize", this.resizeFunction);
   }
   componentDidUpdate(e) {
+    ///
+    if (this.refs.mainPanel === undefined) return;
+    ///
     if (e.history.location.pathname !== e.location.pathname) {
       this.refs.mainPanel.scrollTop = 0;
       if (this.state.mobileOpen) {

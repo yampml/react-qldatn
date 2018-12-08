@@ -46,6 +46,20 @@ const sidebarStyle = theme => ({
       ...transition
     }
   },
+  slash: {
+    position: "relative",
+    padding: "15px 0 0 0",
+    zIndex: "4",
+    "&:after": {
+      content: '""',
+      position: "absolute",
+      bottom: "0",
+      height: "1px",
+      right: "15px",
+      width: "calc(100% - 30px)",
+      backgroundColor: "rgba(180, 180, 180, 0.3)"
+    }
+  },
   logo: {
     position: "relative",
     padding: "15px 15px",

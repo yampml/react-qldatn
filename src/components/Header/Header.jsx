@@ -19,6 +19,14 @@ function Header({ ...props }) {
   function makeBrand() {
     var name;
     props.routes.map((prop, key) => {
+      if(prop.childLink) {
+        prop.childLink.map((prop2, key2) => {
+          if (prop2.path === props.location.pathname) {
+            name = prop2.navbarName;
+          }
+          return null;
+        })
+      }
       if (prop.path === props.location.pathname) {
         name = prop.navbarName;
       }
