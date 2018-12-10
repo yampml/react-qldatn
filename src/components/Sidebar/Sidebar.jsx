@@ -46,7 +46,7 @@ class Sidebar extends Component {
       <List className={classes.list}>
         {routes.map((prop, key) => {
           if (prop.slash) {
-            return <div className={classes.slash}></div>;
+            return <div className={classes.slash} key={key}></div>;
           }
           if (prop.redirect) return null;
           if (prop.childLink) {
@@ -54,7 +54,7 @@ class Sidebar extends Component {
               [" " + classes.whiteFont]: activeRoute(prop.path)
             });
             return (
-              <div>
+              <div key={key}>
                 <ListItem button className={classes.itemLink + listItemClasses} onClick={this.handleClick} key={key}>
                   <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
                     {typeof prop.icon === "string" ? (
@@ -105,8 +105,6 @@ class Sidebar extends Component {
                 </List>
               </Collapse>
             </div>
-
-              
             )
           } else {/////////////////////////////////////////////////////////////////////////////////////
             var listItemClasses;

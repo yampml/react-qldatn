@@ -1,14 +1,17 @@
-import React from "react";
+import React, { Component } from "react";
 // @material-ui/core components
 import withStyles from "@material-ui/core/styles/withStyles";
 // core components
 import GridItem from "components/Grid/GridItem.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
-import Table from "components/Table/Table.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 
+import MaterialTable from 'material-table';
+import IconButton from '@material-ui/core/IconButton';
+import AddBoxIcon from '@material-ui/icons/AddBox';
+import NewKhoaModal from './NewKhoaModal/NewKhoaModal.jsx';
 const styles = {
   cardCategoryWhite: {
     "&,& a,& a:hover,& a:focus": {
@@ -39,74 +42,152 @@ const styles = {
   }
 };
 
-function DanhSachKhoa(props) {
-  const { classes } = props;
-  return (
-    <GridContainer>
-      <GridItem xs={12} sm={12} md={12}>
-        <Card>
-          <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Simple Table</h4>
-            <p className={classes.cardCategoryWhite}>
-              Here is a subtitle for this table
+class DanhSachKhoa extends Component {
+  constructor(props) {
+    super(props);
+    this.classes = this.props.classes;
+    this.state = {
+      cardTable: {
+        cardHeader: "Danh sách khoa",
+        cardHeaderSub: "Mục này dùng để quản lý danh sách Khoa",
+        dsKhoaTable: {
+          table: {
+            header: [
+                { title: 'STT', field: 'id' },
+                { title: 'Ten Khoa', field: 'tenKhoa' },
+                { title: 'So Luong SV', field: 'soLuongSV', type: 'numeric' },
+              ],
+            data: [
+              { tenKhoa: "Cong nghe thong tin", soLuongSV: "696"},
+              { tenKhoa: "Cong nghe 4.0", soLuongSV: "694"},
+              { tenKhoa: "Cong nghe 3.0", soLuongSV: "693"},
+              { tenKhoa: "Cong nghe 2.0", soLuongSV: "692"},
+              { tenKhoa: "Cong nghe thuc pham", soLuongSV: "696"},
+              { tenKhoa: "Cong nghe lam web", soLuongSV: "694"},
+              { tenKhoa: "Cong nghe japan", soLuongSV: "693"},
+              { tenKhoa: "Cong nghe video", soLuongSV: "692"},
+            ]
+          },
+        },
+      },
+      modalNewKhoaOpen: false,
+    }
+  }
+
+  toggleModalNewKhoaOpen = () => {
+    this.setState((prevState) => {
+      return { modalNewKhoaOpen: !prevState.modalNewKhoaOpen }
+    })
+    console.log(this.state.modalNewKhoaOpen);
+  }
+
+  rawDataToTable = () => {
+    let rawTable = this.state.cardTable.dsKhoaTable.table;
+    let tableHead = rawTable.header;
+    let tableData = rawTable.data.map((row, index) => {
+        return {
+          id: index,
+          ...row,
+        }
+      });
+    // console.log(tableData);
+    return (
+      <Card>
+        <CardHeader color="primary">  
+          <div style={{float: "left"}}>
+            <h4 className={this.classes.cardTitleWhite}>{this.state.cardTable.cardHeader}</h4>
+            <p className={this.classes.cardCategoryWhite}>
+              {this.state.cardTable.cardHeaderSub}
             </p>
-          </CardHeader>
-          <CardBody>
-            <Table
-              tableHeaderColor="primary"
-              tableHead={["Name", "Country", "City", "Salary"]}
-              tableData={[
-                ["Dakota Rice", "Niger", "Oud-Turnhout", "$36,738"],
-                ["Minerva Hooper", "Curaçao", "Sinaai-Waas", "$23,789"],
-                ["Sage Rodriguez", "Netherlands", "Baileux", "$56,142"],
-                ["Philip Chaney", "Korea, South", "Overland Park", "$38,735"],
-                ["Doris Greene", "Malawi", "Feldkirchen in Kärnten", "$63,542"],
-                ["Mason Porter", "Chile", "Gloucester", "$78,615"]
+          </div>
+          <IconButton style={{float: "right"}} className={this.classes.cardTitleWhite} onClick={this.toggleModalNewKhoaOpen}>
+            <span style={{paddingRight: "10px", fontSize: "20px"}}>Tạo khoa mới</span>
+            <AddBoxIcon fontSize="inherit" />
+          </IconButton>
+        </CardHeader>
+        <CardBody>
+          <MaterialTable 
+            title={""}
+            columns={tableHead}
+            data={tableData}
+            actions=
+              {[
+                {
+                  icon: 'edit',
+                  tooltip: 'Delete this record',
+                  onClick: (event, rowData) => {
+                    alert('You clicked user ' + rowData.tenKhoa)
+                  },
+                },
+                {
+                  icon: 'delete',
+                  tooltip: 'Delete this record',
+                  onClick: (event, rowData) => {
+                    alert('You clicked user ' + rowData.tenKhoa)
+                  },
+                },
               ]}
-            />
-          </CardBody>
-        </Card>
-      </GridItem>
-      <GridItem xs={12} sm={12} md={12}>
-        <Card plain>
-          <CardHeader plain color="primary">
-            <h4 className={classes.cardTitleWhite}>
-              Table on Plain Background
-            </h4>
-            <p className={classes.cardCategoryWhite}>
-              Here is a subtitle for this table
-            </p>
-          </CardHeader>
-          <CardBody>
-            <Table
-              tableHeaderColor="primary"
-              tableHead={["ID", "Name", "Country", "City", "Salary"]}
-              tableData={[
-                ["1", "Dakota 696969696", "$36,738", "Niger", "Oud-Turnhout"],
-                ["2", "Minerva Hooper", "$23,789", "Curaçao", "Sinaai-Waas"],
-                ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
-                [
-                  "4",
-                  "Philip Chaney",
-                  "$38,735",
-                  "Korea, South",
-                  "Overland Park"
-                ],
-                [
-                  "5",
-                  "Doris Greene",
-                  "$63,542",
-                  "Malawi",
-                  "Feldkirchen in Kärnten"
-                ],
-                ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
-              ]}
-            />
-          </CardBody>
-        </Card>
-      </GridItem>
-    </GridContainer>
-  );
+            options={{
+              actionsColumnIndex: -1,
+              filtering: true,
+              toolbar: true,
+              search: true,
+              sorting: true,
+            }}
+          />
+        </CardBody>
+      </Card>
+    );
+  }
+
+  render() {
+    return (
+      <GridContainer justify="center">
+        <GridItem xs={11} sm={11} md={11}>
+          {this.rawDataToTable()}
+        </GridItem>
+        {/* <GridItem xs={11} sm={11} md={11}>
+          <Card plain>
+            <CardHeader plain color="primary">
+              <h4 className={classes.cardTitleWhite}>
+                Table on Plain Background
+              </h4>
+              <p className={classes.cardCategoryWhite}>
+                Here is a subtitle for this table
+              </p>
+            </CardHeader>
+            <CardBody>
+              <Table
+                tableHeaderColor="primary"
+                tableHead={["ID", "Name", "Country", "City", "Salary"]}
+                tableData={[
+                  ["1", "Dakota 696969696", "$36,738", "Niger", "Oud-Turnhout"],
+                  ["2", "Minerva Hooper", "$23,789", "Curaçao", "Sinaai-Waas"],
+                  ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
+                  [
+                    "4",
+                    "Philip Chaney",
+                    "$38,735",
+                    "Korea, South",
+                    "Overland Park"
+                  ],
+                  [
+                    "5",
+                    "Doris Greene",
+                    "$63,542",
+                    "Malawi",
+                    "Feldkirchen in Kärnten"
+                  ],
+                  ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
+                ]}
+              />
+            </CardBody>
+          </Card>
+        </GridItem> */}
+        <NewKhoaModal open={this.state.modalNewKhoaOpen} onClose={this.toggleModalNewKhoaOpen}/>
+      </GridContainer>
+    );
+  }
 }
 
 export default withStyles(styles)(DanhSachKhoa);

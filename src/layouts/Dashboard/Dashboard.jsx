@@ -16,7 +16,7 @@ import dashboardRoutes from "routes/dashboard.jsx";
 
 import dashboardStyle from "assets/jss/material-dashboard-react/layouts/dashboardStyle.jsx";
 
-import image from "assets/img/bkdn.jpg";
+import image from "assets/img/superPhuong.jpg";
 import logo from "assets/img/logobkdn.png";
 
 const switchRoutes = (
