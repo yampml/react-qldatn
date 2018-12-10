@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+
 import Modal from '@material-ui/core/Modal';
-import TextField from '@material-ui/core/TextField';
+
 
 import GridItem from "components/Grid/GridItem.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
@@ -14,8 +14,9 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardAvatar from "components/Card/CardAvatar.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
-import InputLabel from "@material-ui/core/InputLabel";
+
 import avatar from "assets/img/faces/marc.jpg";
+
 function getModalStyle() {
     const top = 55;
     const left = 56;
@@ -150,7 +151,7 @@ class SimpleModal extends Component {
                                             I love Rick Owens’ bed design but the back is...
                                         </p>
                                         <Button color="primary" round>
-                                            Follow
+                                            OKAY
                                         </Button>
                                     </CardBody>
                                 </Card>

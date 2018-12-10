@@ -12,10 +12,10 @@ import UserProfile from "views/UserProfile/UserProfile.jsx";
 import TableList from "views/TableList/TableList.jsx";
 import DanhSachKhoa from "views/DanhSachKhoa/DanhSachKhoa.jsx";
 import Typography from "views/Typography/Typography.jsx";
-import Icons from "views/Icons/Icons.jsx";
 import Maps from "views/Maps/Maps.jsx";
 import NotificationsPage from "views/Notifications/Notifications.jsx";
 import Auth from "../views/Auth/Auth.jsx";
+import QuanLyTienDo from "../views/QuanLyTienDo/QuanLyTienDo.jsx";
 
 const dashboardRoutes = [
   {
@@ -72,18 +72,18 @@ const dashboardRoutes = [
     ]
   },
   {
+    path: "/tiendo",
+    sidebarName: "Quản lý tiến độ",
+    navbarName: "Quản lý tiến độ",
+    icon: BubbleChart,
+    component: QuanLyTienDo
+  },
+  {
     path: "/doan",
     sidebarName: "Quản lý đồ án",
     navbarName: "Quản lý đồ án",
     icon: LibraryBooks,
     component: Typography
-  },
-  {
-    path: "/tiendo",
-    sidebarName: "Quản lý tiến độ",
-    navbarName: "Quản lý tiến độ",
-    icon: BubbleChart,
-    component: Icons
   },
   {
     path: "/maps",
