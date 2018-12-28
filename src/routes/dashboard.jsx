@@ -10,12 +10,13 @@ import Notifications from "@material-ui/icons/Notifications";
 import DashboardPage from "views/Dashboard/Dashboard.jsx";
 import UserProfile from "views/UserProfile/UserProfile.jsx";
 import TableList from "views/TableList/TableList.jsx";
-import DanhSachKhoa from "views/DanhSachKhoa/DanhSachKhoa.jsx";
 import Typography from "views/Typography/Typography.jsx";
 import Maps from "views/Maps/Maps.jsx";
 import NotificationsPage from "views/Notifications/Notifications.jsx";
 import Auth from "../views/Auth/Auth.jsx";
 import QuanLyTienDo from "../views/QuanLyTienDo/QuanLyTienDo.jsx";
+import DanhSachKhoa from "views/DanhSachKhoa/DanhSachKhoa.jsx";
+import ShowKhoa from "views/DanhSachKhoa/show/ShowKhoa.jsx";
 
 const dashboardRoutes = [
   {
@@ -35,6 +36,15 @@ const dashboardRoutes = [
   {
     slash: true,
   },
+
+  {
+    path: "/quanlychung/dskhoa/:id",
+    sidebarName: "Khoa",
+    navbarName: "Khoa",
+    icon: "content_paste",
+    hide: true,
+    component: ShowKhoa
+  },// de truoc dskhoa
   {
     path: "/quanlychung",
     sidebarName: "Quản lý chung",
@@ -43,29 +53,29 @@ const dashboardRoutes = [
     childLink: [
       {
         path: "/quanlychung/dskhoa",
-        sidebarName: "Danh sách Khoa",
-        navbarName: "Danh sách Khoa",
+        sidebarName: "Khoa",
+        navbarName: "Khoa",
         icon: "content_paste",
         component: DanhSachKhoa
       },
       {
         path: "/quanlychung/dslop",
-        sidebarName: "Danh sách Lớp",
-        navbarName: "Danh sách Lớp",
-        icon: "content_paste",
-        component: TableList
-      },
-      {
-        path: "/quanlychung/dssv",
-        sidebarName: "Danh sách Sinh viên",
-        navbarName: "Danh sách Sinh viên",
+        sidebarName: "Lớp",
+        navbarName: "Lớp",
         icon: "content_paste",
         component: TableList
       },
       {
         path: "/quanlychung/dsgv",
-        sidebarName: "Danh sách Giảng viên",
-        navbarName: "Danh sách Giảng viên",
+        sidebarName: "Giảng viên",
+        navbarName: "Giảng viên",
+        icon: "content_paste",
+        component: TableList
+      },
+      {
+        path: "/quanlychung/dssv",
+        sidebarName: "Sinh viên",
+        navbarName: "Sinh viên",
         icon: "content_paste",
         component: TableList
       },

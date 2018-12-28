@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 
 import Modal from '@material-ui/core/Modal';
+import IconButton from '@material-ui/core/IconButton';
+import Icon from '@material-ui/core/Icon';
+
 
 
 import GridItem from "components/Grid/GridItem.jsx";
@@ -11,11 +14,8 @@ import CustomInput from "components/CustomInput/CustomInput.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
-import CardAvatar from "components/Card/CardAvatar.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
-
-import avatar from "assets/img/faces/marc.jpg";
 
 function getModalStyle() {
     const top = 55;
@@ -34,7 +34,7 @@ const styles = theme => ({
         width: theme.spacing.unit * 170,
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
-        padding: theme.spacing.unit * 4,
+        padding: theme.spacing.unit * 1,
     },
     container: {
         display: 'flex',
@@ -46,7 +46,7 @@ const styles = theme => ({
         width: 200,
     },
     dense: {
-        marginTop: 19,
+        marginTop: 10,
     },
     menu: {
         width: 200,
@@ -77,10 +77,17 @@ class SimpleModal extends Component {
                 >
                     <div style={getModalStyle()} className={classes.paper}>
                         <GridContainer>
-                            <GridItem xs={12} sm={12} md={8}>
+                            <GridItem xs={12} sm={12} md={12}>
+                                <div style={{float: "right", height: "60px"}}>
+                                    <IconButton onClick={this.props.onClose}>
+                                        <Icon>
+                                            clear
+                                        </Icon>
+                                    </IconButton>
+                                </div>
                                 <Card>
                                     <CardHeader color="primary">
-                                        <h4 className={classes.cardTitleWhite}>THÊM KHOA</h4>
+                                        <h5 style={{ padding: "0px", margin: "0px"}}>THÊM KHOA</h5>
                                     </CardHeader>
                                     <CardBody>
                                         <GridContainer>
@@ -135,27 +142,7 @@ class SimpleModal extends Component {
                                     </CardFooter>
                                 </Card>
                             </GridItem>
-                            <GridItem xs={12} sm={12} md={4}>
-                                <Card profile>
-                                    <CardAvatar profile>
-                                        <a href="#pablo" onClick={e => e.preventDefault()}>
-                                            <img src={avatar} alt="..." />
-                                        </a>
-                                    </CardAvatar>
-                                    <CardBody profile>
-                                        <h6 className={classes.cardCategory}>CEO / CO-FOUNDER</h6>
-                                        <h4 className={classes.cardTitle}>Alec Thompson</h4>
-                                        <p className={classes.description}>
-                                            Don't be scared of the truth because we need to restart the
-                                            human foundation in truth And I love you like Kanye loves Kanye
-                                            I love Rick Owens’ bed design but the back is...
-                                        </p>
-                                        <Button color="primary" round>
-                                            OKAY
-                                        </Button>
-                                    </CardBody>
-                                </Card>
-                            </GridItem>
+                            
                         </GridContainer>
                         <SimpleModalWrapped />
                     </div>
@@ -165,10 +152,6 @@ class SimpleModal extends Component {
         );
     }
 }
-
-SimpleModal.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 
 // We need an intermediary variable for handling the recursive nesting.
 const SimpleModalWrapped = withStyles(styles)(SimpleModal);

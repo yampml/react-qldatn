@@ -53,19 +53,19 @@ class DanhSachKhoa extends Component {
         dsKhoaTable: {
           table: {
             header: [
-                { title: 'STT', field: 'id' },
-                { title: 'Ten Khoa', field: 'tenKhoa' },
-                { title: 'So Luong SV', field: 'soLuongSV', type: 'numeric' },
-              ],
+              { title: 'STT', field: 'id' },
+              { title: 'Ten Khoa', field: 'tenKhoa' },
+              { title: 'So Luong SV', field: 'soLuongSV', type: 'numeric' },
+            ],
             data: [
-              { tenKhoa: "Cong nghe thong tin", soLuongSV: "696"},
-              { tenKhoa: "Cong nghe 4.0", soLuongSV: "694"},
-              { tenKhoa: "Cong nghe 3.0", soLuongSV: "693"},
-              { tenKhoa: "Cong nghe 2.0", soLuongSV: "692"},
-              { tenKhoa: "Cong nghe thuc pham", soLuongSV: "696"},
-              { tenKhoa: "Cong nghe lam web", soLuongSV: "694"},
-              { tenKhoa: "Cong nghe japan", soLuongSV: "693"},
-              { tenKhoa: "Cong nghe video", soLuongSV: "692"},
+              { tenKhoa: "Cong nghe thong tin", soLuongSV: "696" },
+              { tenKhoa: "Cong nghe 4.0", soLuongSV: "694" },
+              { tenKhoa: "Cong nghe 3.0", soLuongSV: "693" },
+              { tenKhoa: "Cong nghe 2.0", soLuongSV: "692" },
+              { tenKhoa: "Cong nghe thuc pham", soLuongSV: "696" },
+              { tenKhoa: "Cong nghe lam web", soLuongSV: "694" },
+              { tenKhoa: "Cong nghe japan", soLuongSV: "693" },
+              { tenKhoa: "Cong nghe video", soLuongSV: "692" },
             ]
           },
         },
@@ -85,55 +85,91 @@ class DanhSachKhoa extends Component {
     let rawTable = this.state.cardTable.dsKhoaTable.table;
     let tableHead = rawTable.header;
     let tableData = rawTable.data.map((row, index) => {
-        return {
-          id: index,
-          ...row,
-        }
-      });
+      return {
+        id: index,
+        ...row,
+      }
+    });
     // console.log(tableData);
     return (
       <Card>
-        <CardHeader color="primary">  
-          <div style={{float: "left"}}>
-            <h4 className={this.classes.cardTitleWhite}>{this.state.cardTable.cardHeader}</h4>
-            <p className={this.classes.cardCategoryWhite}>
-              {this.state.cardTable.cardHeaderSub}
+        <CardHeader color="primary">
+          <div style={ { float: "left" } }>
+            <h4 className={ this.classes.cardTitleWhite }>{ this.state.cardTable.cardHeader }</h4>
+            <p className={ this.classes.cardCategoryWhite }>
+              { this.state.cardTable.cardHeaderSub }
             </p>
           </div>
-          <IconButton style={{float: "right"}} className={this.classes.cardTitleWhite} onClick={this.toggleModalNewKhoaOpen}>
-            <span style={{paddingRight: "10px", fontSize: "20px"}}>Tạo khoa mới</span>
+          <IconButton style={ { float: "right" } } className={ this.classes.cardTitleWhite } onClick={ this.toggleModalNewKhoaOpen }>
+            <span style={ { paddingRight: "10px", fontSize: "20px" } }>Tạo khoa mới</span>
             <AddBoxIcon fontSize="inherit" />
           </IconButton>
         </CardHeader>
         <CardBody>
-          <MaterialTable 
-            title={""}
-            columns={tableHead}
-            data={tableData}
+          <MaterialTable
+            // title={""}
+            columns={ tableHead }
+            data={ tableData }
             actions=
-              {[
+            {
+              [
                 {
-                  icon: 'edit',
-                  tooltip: 'Delete this record',
+                  icon: 'open_in_new',
+                  tooltip: 'Chi tiết',
                   onClick: (event, rowData) => {
-                    alert('You clicked user ' + rowData.tenKhoa)
+                    this.props.history.push("/quanlychung/dskhoa/1")
                   },
                 },
                 {
                   icon: 'delete',
-                  tooltip: 'Delete this record',
+                  tooltip: 'Xóa',
                   onClick: (event, rowData) => {
                     alert('You clicked user ' + rowData.tenKhoa)
                   },
+                }
+              ]
+            }
+            options={
+              {
+                actionsColumnIndex: -1,
+                filtering: true,
+                toolbar: false,
+                search: true,
+                sorting: true,
+              }
+            }
+            localization={ {
+              pagination: {
+                labelDisplayedRows: 'Mục {from} đến {to} trong tổng số {count}', // {from}-{to} of {count}
+                labelRowsPerPage: 'Số hàng hiển thị:', // Rows per page:
+                firstAriaLabel: 'Trang đầu', // First Page
+                firstTooltip: 'Trang đầu', // First Page
+                previousAriaLabel: 'Trang trước', // Previous Page
+                previousTooltip: 'Trang trước', // Previous Page
+                nextAriaLabel: 'Trang tiếp', // Next Page
+                nextTooltip: 'Trang tiếp', // Next Page
+                lastAriaLabel: 'Trang cuối', // Last Page
+                lastTooltip: 'Trang cuối', // Last Page
+              },
+              toolbar: {
+                nRowsSelected: '{0} hàng được chọn', // {0} row(s) selected
+                showColumnsTitle: 'Các cột hiển thị', // Show Columns
+                showColumnsAriaLabel: 'Các cột hiển thị', // Show Columns
+                exportTitle: 'Xuất file', // Export
+                exportAriaLabel: 'Xuất file', // Export
+                exportName: 'Xuấy file CSV', // Export as CSV
+                searchTooltip: 'Tìm kiếm', // Search
+              },
+              header: {
+                actions: 'Hành động', // Actions
+              },
+              body: {
+                emptyDataSourceMessage: 'Không có dữ liệu', // No records to display
+                filterRow: {
+                  filterTooltip: 'Bộ lọc', // Filter
                 },
-              ]}
-            options={{
-              actionsColumnIndex: -1,
-              filtering: true,
-              toolbar: true,
-              search: true,
-              sorting: true,
-            }}
+              },
+            } }
           />
         </CardBody>
       </Card>
@@ -143,48 +179,10 @@ class DanhSachKhoa extends Component {
   render() {
     return (
       <GridContainer justify="center">
-        <GridItem xs={11} sm={11} md={11}>
-          {this.rawDataToTable()}
+        <GridItem xs={ 11 } sm={ 11 } md={ 11 }>
+          { this.rawDataToTable() }
         </GridItem>
-        {/* <GridItem xs={11} sm={11} md={11}>
-          <Card plain>
-            <CardHeader plain color="primary">
-              <h4 className={classes.cardTitleWhite}>
-                Table on Plain Background
-              </h4>
-              <p className={classes.cardCategoryWhite}>
-                Here is a subtitle for this table
-              </p>
-            </CardHeader>
-            <CardBody>
-              <Table
-                tableHeaderColor="primary"
-                tableHead={["ID", "Name", "Country", "City", "Salary"]}
-                tableData={[
-                  ["1", "Dakota 696969696", "$36,738", "Niger", "Oud-Turnhout"],
-                  ["2", "Minerva Hooper", "$23,789", "Curaçao", "Sinaai-Waas"],
-                  ["3", "Sage Rodriguez", "$56,142", "Netherlands", "Baileux"],
-                  [
-                    "4",
-                    "Philip Chaney",
-                    "$38,735",
-                    "Korea, South",
-                    "Overland Park"
-                  ],
-                  [
-                    "5",
-                    "Doris Greene",
-                    "$63,542",
-                    "Malawi",
-                    "Feldkirchen in Kärnten"
-                  ],
-                  ["6", "Mason Porter", "$78,615", "Chile", "Gloucester"]
-                ]}
-              />
-            </CardBody>
-          </Card>
-        </GridItem> */}
-        <NewKhoaModal open={this.state.modalNewKhoaOpen} onClose={this.toggleModalNewKhoaOpen}/>
+        <NewKhoaModal open={ this.state.modalNewKhoaOpen } onClose={ this.toggleModalNewKhoaOpen } />
       </GridContainer>
     );
   }

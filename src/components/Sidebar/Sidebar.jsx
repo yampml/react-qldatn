@@ -45,6 +45,7 @@ class Sidebar extends Component {
     var links = (
       <List className={classes.list}>
         {routes.map((prop, key) => {
+          if (prop.hide) return null;
           if (prop.slash) {
             return <div className={classes.slash} key={key}></div>;
           }

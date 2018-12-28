@@ -22,6 +22,7 @@ import logo from "assets/img/logobkdn.png";
 const switchRoutes = (
   <Switch>
     {dashboardRoutes.map((prop, key) => {
+      // if (prop.hide) return null;
       if (prop.slash) return;
       if (prop.redirect)
         return <Redirect from={prop.path} to={prop.to} key={"child" + key} />;
