@@ -8,9 +8,7 @@ import Icon from '@material-ui/core/Icon';
 import TextField from '@material-ui/core/TextField';
 // core components
 
-import GridItem from "components/Grid/GridItem.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
@@ -141,7 +139,6 @@ class ShowKhoa extends Component {
     };
 
     handleChange = name => event => {
-        console.log(name);
         this.setState({
             [name]: event.target.value,
         });
@@ -385,9 +382,7 @@ class ShowKhoa extends Component {
 
         return (
             <GridContainer>
-                <Grid
-                    direction="row"
-                >
+                <Grid>
                     <NavLink to="/quanlychung/dskhoa/">Danh sách khoa</NavLink> > { this.state.khoaData.id }.{ this.state.tenKhoa }
                 </Grid>
                 <Card>

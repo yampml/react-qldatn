@@ -30,10 +30,15 @@ class Sidebar extends Component {
   // verifies if routeName is the one active (in browser input)
   state = {
     open: false,
+    collapseList: new Array(100).fill(false)
   }
 
-  handleClick = () => {
-    this.setState(state => ({ open: !state.open }));
+  handleClick = (key) => {
+    
+    // this.setState(state => ({ open: !state.open }));
+    let c = this.state.collapseList.slice();
+    c[key] = !c[key]
+    this.setState({ collapseList: c })
   };
 
   render() {
@@ -56,7 +61,7 @@ class Sidebar extends Component {
             });
             return (
               <div key={key}>
-                <ListItem button className={classes.itemLink + listItemClasses} onClick={this.handleClick} key={key}>
+                <ListItem button className={classes.itemLink + listItemClasses} onClick={() =>  this.handleClick(key)} key={key}>
                   <ListItemIcon className={classes.itemIcon + whiteFontClasses}>
                     {typeof prop.icon === "string" ? (
                       <Icon>{prop.icon}</Icon>
@@ -65,9 +70,9 @@ class Sidebar extends Component {
                     )}
                   </ListItemIcon>
                 <ListItemText inset primary={prop.sidebarName} className={classes.itemText + whiteFontClasses} disableTypography={true} />
-                {this.state.open ? <ExpandLess /> : <ExpandMore />}
+                {this.state.collapseList[key] ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
-              <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+              <Collapse in={this.state.collapseList[key]} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                   {
                     prop.childLink.map((childProp, childKey) => {

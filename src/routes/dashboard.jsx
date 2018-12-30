@@ -17,6 +17,9 @@ import Auth from "../views/Auth/Auth.jsx";
 import QuanLyTienDo from "../views/QuanLyTienDo/QuanLyTienDo.jsx";
 import DanhSachKhoa from "views/DanhSachKhoa/DanhSachKhoa.jsx";
 import ShowKhoa from "views/DanhSachKhoa/show/ShowKhoa.jsx";
+import TaoTaiKhoan from "views/DSTaiKhoan/TaoTaiKhoan.jsx";
+import DSTaiKhoan from "views/DSTaiKhoan/DSTaiKhoan.jsx";
+
 
 const dashboardRoutes = [
   {
@@ -36,7 +39,28 @@ const dashboardRoutes = [
   {
     slash: true,
   },
-
+  {
+    path: "/quanlytaikhoan",
+    sidebarName: "Quản lý tài khoản",
+    navbarName: "Table List",
+    icon: "content_paste",
+    childLink: [
+      {
+        path: "/quanlytaikhoan/taotaikhoan",
+        sidebarName: "Tạo tài khoản",
+        navbarName: "Tạo tài khoản",
+        icon: "content_paste",
+        component: TaoTaiKhoan
+      },
+      {
+        path: "/quanlytaikhoan/danhsachtaikhoan",
+        sidebarName: "Danh sách tài khoản",
+        navbarName: "Danh sách tài khoản",
+        icon: "content_paste",
+        component: DSTaiKhoan
+      }
+    ]
+  },
   {
     path: "/quanlychung/dskhoa/:id",
     sidebarName: "Khoa",
@@ -82,19 +106,45 @@ const dashboardRoutes = [
     ]
   },
   {
-    path: "/tiendo",
-    sidebarName: "Quản lý tiến độ",
-    navbarName: "Quản lý tiến độ",
-    icon: BubbleChart,
-    component: QuanLyTienDo
-  },
-  {
-    path: "/doan",
+    path: "/quanlydoan",
     sidebarName: "Quản lý đồ án",
     navbarName: "Quản lý đồ án",
-    icon: LibraryBooks,
-    component: Typography
+    icon: "content_paste",
+    childLink: [
+      {
+        path: "/doan",
+        sidebarName: "Quản lý đồ án",
+        navbarName: "Quản lý đồ án",
+        icon: LibraryBooks,
+        component: Typography
+      },
+      {
+        path: "/phancong",
+        sidebarName: "Phân công hướng dẫn",
+        navbarName: "Phân công hướng dẫn",
+        icon: BubbleChart,
+        component: null
+      },
+      {
+        path: "/tiendo",
+        sidebarName: "Quản lý tiến độ",
+        navbarName: "Quản lý tiến độ",
+        icon: BubbleChart,
+        component: QuanLyTienDo
+      },
+      {
+        path: "/hoidongbaove",
+        sidebarName: "Hội đồng bảo vệ",
+        navbarName: "Hội đồng bảo vệ",
+        icon: BubbleChart,
+        component: null
+      },
+    ]
   },
+
+
+
+
   {
     path: "/maps",
     sidebarName: "Maps",
