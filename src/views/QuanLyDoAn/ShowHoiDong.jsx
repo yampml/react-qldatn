@@ -71,7 +71,7 @@ class ShowHoiDong extends Component {
             danhSachSinhVien: {
                 table: {
                     header: [
-                        { title: 'STT', field: 'id' },
+                        { title: 'STT', field: 'id', cellStyle: { width: '10px' } },
                         { title: 'Tên Sinh viên', field: 'tenSV' },
                         { title: 'Lớp', field: 'lop' },
                         { title: 'Đề tài', field: 'tenDeTai' },
@@ -90,8 +90,8 @@ class ShowHoiDong extends Component {
             danhSachGiangVien: {
                 table: {
                     header: [
-                        { title: 'STT', field: 'id' },
-                        { title: 'Học vị', field: 'hocVi' },
+                        { title: 'STT', field: 'id', cellStyle: { width: '10px' } },
+                        { title: 'Học vị', field: 'hocVi', cellStyle: { width: '10px' } },
                         { title: 'Tên Giảng viên', field: 'tenGV' },
                         { title: 'SĐT', field: 'sdt' },//, type: 'numeric' 
                     ],
