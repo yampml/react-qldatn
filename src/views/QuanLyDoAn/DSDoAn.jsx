@@ -52,34 +52,62 @@ const styles = {
 };
 
 
-class DSTaiKhoan extends Component {
+class DSDoAn extends Component {
     state = {
         dstk: {
             table: {
                 header: [
                     { title: 'STT', field: 'id', cellStyle: { width: '10px' }, },
-                    { title: 'Tên đăng nhập', field: 'tenTK' },
-                    { title: 'Mật khẩu', field: 'matkhau', filtering: false },
-                    { title: 'Loại tài khoản', field: 'loai', lookup: { 1: "Sinh viên", 2: "Giảng viên", 3: "Quản lý" } },
+                    { title: 'MSSV', field: 'mssv' },
+                    { title: 'Sinh viên', field: 'tenSV' },
+                    { title: 'GV Hướng dẫn', field: 'tenGV' },
+                    { title: 'Tên đồ án', field: 'tenDoAn' },
+                    {
+                        title: 'Khoa', field: 'tenKhoa', lookup:
+                        {
+                            1: "Công nghệ thông tin",
+                            2: "Công nghệ thông báo",
+                            3: "Công nghệ thông cống",
+                            4: "Công nghệ thông đồ án",
+                            5: "Công nghệ thông thái",
+                        }
+                    },
+                    {
+                        title: 'Lớp', field: 'tenLop', lookup:
+                        {
+                            1: "15TCLC2",
+                            2: "15TCLC3",
+                            3: "15TCLC4",
+                            4: "15ECLC1",
+                            5: "15XXXX",
+                        }
+                    },
+                    {
+                        title: 'Trạng thái', field: 'trangThai', lookup:
+                        {
+                            1: "Chưa đăng kí",
+                            2: "Đã đăng kí",
+                            3: "Đã báo cáo đợt 1",
+                            4: "Đã báo cáo đợt 2",
+                            5: "Đã báo cáo đợt 3",
+                            6: "Đã bảo vệ",
+                        }
+                    },
                 ],
                 data: [
-                    { tenTK: "ledinhsinh", matkhau: "ak47awp", loai: 1 },
-                    { tenTK: "ledinhlang", matkhau: "ak47awp", loai: 1 },
-                    { tenTK: "ledinhtung", matkhau: "ak47awp", loai: 1 },
-                    { tenTK: "ledinhbang", matkhau: "ak47awp", loai: 1 },
-                    { tenTK: "ledinhson", matkhau: "ak47awp", loai: 1 },
-                    { tenTK: "lebanson", matkhau: "ak47awp", loai: 2 },
-                    { tenTK: "lethanhson", matkhau: "ak47awp", loai: 2 },
-                    { tenTK: "lebuison", matkhau: "ak47awp", loai: 2 },
-                    { tenTK: "lefoobar", matkhau: "ak47awp", loai: 2 },
-                    { tenTK: "levansong", matkhau: "ak47awp", loai: 2 },
-                    { tenTK: "lengoctrong", matkhau: "ak47awp", loai: 2 },
-                    { tenTK: "lecaoson", matkhau: "ak47awp", loai: 3 },
-                    { tenTK: "lelyly", matkhau: "ak47awp", loai: 3 },
-                    { tenTK: "ledinhsinh", matkhau: "ak47awp", loai: 3 },
-                    { tenTK: "ledinhsinh", matkhau: "ak47awp", loai: 3 },
-                    { tenTK: "ledinhsinh", matkhau: "ak47awp", loai: 3 },
-                    { tenTK: "ledinhsinh", matkhau: "ak47awp", loai: 3 },
+                    { mssv:"10120341", tenSV: "Lê Đình Xinh", tenGV: "Putin", tenDoAn: "", tenKhoa: 1, tenLop: 1, trangThai: 1 },
+                    { mssv:"10120341", tenSV: "Lê Đình Xinh", tenGV: "Putin", tenDoAn: "Xây dựng XXX", tenKhoa: 2, tenLop: 2, trangThai: 2 },
+                    { mssv:"10120341", tenSV: "Lê Đình Xinh", tenGV: "Trump", tenDoAn: "Xây dựng BBB", tenKhoa: 3, tenLop: 3, trangThai: 3 },
+                    { mssv:"10120341", tenSV: "Lê Đình Xinh", tenGV: "Trump", tenDoAn: "Xây dựng VVV", tenKhoa: 4, tenLop: 4, trangThai: 3 },
+                    { mssv:"10120341", tenSV: "Lê Đình Xinh", tenGV: "Trump", tenDoAn: "Xây dựng ddd", tenKhoa: 5, tenLop: 5, trangThai: 4 },
+                    { mssv:"10120341", tenSV: "Lê Đình Xinh", tenGV: "Trump", tenDoAn: "", tenKhoa: 1, tenLop: 2, trangThai: 1 },
+                    { mssv:"10120341", tenSV: "Lê Đình Xinh", tenGV: "AnhX", tenDoAn: "Xây dựng YYY", tenKhoa: 2, tenLop: 3, trangThai: 5 },
+                    { mssv:"10120341", tenSV: "Lê Đình Xinh", tenGV: "AnhX", tenDoAn: "Xây dựng ZZZ", tenKhoa: 3, tenLop: 4, trangThai: 2 },
+                    { mssv:"10120341", tenSV: "Lê Đình Xinh", tenGV: "AnhX", tenDoAn: "Xây dựng XXX", tenKhoa: 4, tenLop: 5, trangThai: 3 },
+                    { mssv:"10120341", tenSV: "Lê Đình Xinh", tenGV: "Putin", tenDoAn: "Xây dựng UUU", tenKhoa: 5, tenLop: 1, trangThai: 3 },
+                    { mssv:"10120341", tenSV: "Lê Đình Xinh", tenGV: "Putin", tenDoAn: "Xây dựng XXX", tenKhoa: 2, tenLop: 2, trangThai: 2 },
+                    { mssv:"10120341", tenSV: "Lê Đình Xinh", tenGV: "Putin", tenDoAn: "", tenKhoa: 3, tenLop: 3, trangThai: 1 },
+                    { mssv:"10120341", tenSV: "Lê Đình Xinh", tenGV: "Putin", tenDoAn: "", tenKhoa: 5, tenLop: 5, trangThai: 1 },
                 ]
             },
         }
@@ -142,7 +170,7 @@ class DSTaiKhoan extends Component {
                         icon: 'open_in_new',
                         tooltip: 'Chi tiết',
                         onClick: (event, rowData) => {
-                            // this.props.history.push("/quanlychung/dskhoa/1")
+                            this.props.history.push("/quanly/quanlydoan/doan/1")
                         },
                     },
                     {
@@ -202,7 +230,7 @@ class DSTaiKhoan extends Component {
             <GridContainer>
                 <Card>
                     <CardHeader color="primary">
-                        <h4 className={ classes.cardTitleWhite }>Khoa { this.state.tenKhoa }</h4>
+                        <h4 className={ classes.cardTitleWhite }>DANH SÁCH THÔNG TIN ĐỒ ÁN SINH VIÊN</h4>
                     </CardHeader>
                     <CardBody>
                         { dstkTableComponent }
@@ -213,4 +241,4 @@ class DSTaiKhoan extends Component {
     }
 }
 
-export default withStyles(styles)(DSTaiKhoan);
+export default withStyles(styles)(DSDoAn);
