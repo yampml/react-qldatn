@@ -64,33 +64,34 @@ const styles = {
 };
 
 
-class ShowKhoa extends Component {
+class ShowHoiDong extends Component {
     state = {
         khoaData: {
             id: this.props.match.params.id,
             danhSachSinhVien: {
                 table: {
                     header: [
-                        { title: 'STT', field: 'id' },
+                        { title: 'STT', field: 'id', cellStyle: { width: '10px' } },
                         { title: 'Tên Sinh viên', field: 'tenSV' },
                         { title: 'Lớp', field: 'lop' },
+                        { title: 'Đề tài', field: 'tenDeTai' },
                         { title: 'SĐT', field: 'sdt' },//, type: 'numeric' 
                     ],
                     data: [
-                        { tenSV: "Lê Đình Sinh", lop: "15TCLC2", sdt: "0969123456" },
-                        { tenSV: "Lê Đình Làng", lop: "15TCLC3", sdt: "0969123456" },
-                        { tenSV: "Lê Đình Tùng", lop: "15TCLC4", sdt: "0969123456" },
-                        { tenSV: "Lê Đình Núi", lop: "15TCLC2", sdt: "0969123456" },
-                        { tenSV: "Lê Đình Bạn Sơn", lop: "15TCLC2", sdt: "0969123456" },
-                        { tenSV: "Lê Đình Lười", lop: "15TCLC2", sdt: "0969123456" },
+                        { tenSV: "Lê Đình Sinh", lop: "15TCLC2", tenDeTai: "Xây dựng hệ thống foobar xử lý foobar bằng công nghệ faaboo", sdt: "0969123456" },
+                        { tenSV: "Lê Đình Làng", lop: "15TCLC3", tenDeTai: "Xây dựng hệ thống foobar xử lý foobar bằng công nghệ faaboo", sdt: "0969123456" },
+                        { tenSV: "Lê Đình Tùng", lop: "15TCLC4", tenDeTai: "Xây dựng hệ thống foobar xử lý foobar bằng công nghệ faaboo", sdt: "0969123456" },
+                        { tenSV: "Lê Đình Núi", lop: "15TCLC2", tenDeTai: "Xây dựng hệ thống foobar xử lý foobar bằng công nghệ faaboo", sdt: "0969123456" },
+                        { tenSV: "Lê Đình Bạn Sơn", lop: "15TCLC2", tenDeTai: "Xây dựng hệ thống foobar xử lý foobar bằng công nghệ faaboo", sdt: "0969123456" },
+                        { tenSV: "Lê Đình Lười", lop: "15TCLC2", tenDeTai: "Xây dựng hệ thống foobar xử lý foobar bằng công nghệ faaboo", sdt: "0969123456" },
                     ]
                 },
             },
             danhSachGiangVien: {
                 table: {
                     header: [
-                        { title: 'STT', field: 'id' },
-                        { title: 'Học vị', field: 'hocVi' },
+                        { title: 'STT', field: 'id', cellStyle: { width: '10px' } },
+                        { title: 'Học vị', field: 'hocVi', cellStyle: { width: '10px' } },
                         { title: 'Tên Giảng viên', field: 'tenGV' },
                         { title: 'SĐT', field: 'sdt' },//, type: 'numeric' 
                     ],
@@ -103,31 +104,16 @@ class ShowKhoa extends Component {
                     ]
                 },
             },
-            danhSachLop: {
-                table: {
-                    header: [
-                        { title: 'STT', field: 'id' },
-                        { title: 'Tên lớp', field: 'tenLop' },
-                        { title: 'Số lượng SV', field: 'soLuongSV', type: 'numeric' },
-                    ],
-                    data: [
-                        { tenLop: "15TCLC2", soLuongSV: 40 },
-                        { tenLop: "15TCLC3", soLuongSV: 30 },
-                        { tenLop: "15TCLC4", soLuongSV: 20 },
-                        { tenLop: "15TCLC5", soLuongSV: 10 },
-                        { tenLop: "15TCLC6", soLuongSV: 50 },
-                    ]
-                },
-            },
         },
         oldData: {
-            email: "cntt@ledinhsinh.edu.vn",
             tenKhoa: "Công nghệ thông tin",
-            moTa: "Lorem ipsum dolor nuclear missile flashbang grenade m4 silence b51 say hetshot",
+            thoiGian: new Date().toJSON(),
+            phong: "H101",
         },
-        email: "cntt@ledinhsinh.edu.vn",
         tenKhoa: "Công nghệ thông tin",
-        moTa: "Lorem ipsum dolor nuclear missile flashbang grenade m4 silence b51 say hetshot",
+        thoiGian: new Date().toJSON(),
+        phong: "H101",
+
         currentTabValue: 0,
         isEditing: false,
 
@@ -180,7 +166,6 @@ class ShowKhoa extends Component {
         const { currentTabValue } = this.state;
         const dssvTableData = this.rawDataToTable(this.state.khoaData.danhSachSinhVien);
         const dsgvTableData = this.rawDataToTable(this.state.khoaData.danhSachGiangVien);
-        const dslopTableData = this.rawDataToTable(this.state.khoaData.danhSachLop);
 
         const dssvTableComponent = <MaterialTable
             // title={""}
@@ -314,76 +299,10 @@ class ShowKhoa extends Component {
             } }
         />
 
-        const dslopTableComponent = <MaterialTable
-            // title={""}
-            columns={ dslopTableData.tableHead }
-            data={ dslopTableData.tableData }
-            actions=
-            {
-                [
-                    {
-                        icon: 'open_in_new',
-                        tooltip: 'Chi tiết',
-                        onClick: (event, rowData) => {
-                            // this.props.history.push("/quanlychung/dskhoa/1")
-                        },
-                    },
-                    {
-                        icon: 'delete',
-                        tooltip: 'Xóa',
-                        onClick: (event, rowData) => {
-                            alert('You clicked user ' + rowData.tenKhoa)
-                        },
-                    }
-                ]
-            }
-            options={
-                {
-                    actionsColumnIndex: -1,
-                    filtering: true,
-                    toolbar: false,
-                    search: true,
-                    sorting: true,
-                }
-            }
-            localization={ {
-                pagination: {
-                    labelDisplayedRows: 'Mục {from} đến {to} trong tổng số {count}', // {from}-{to} of {count}
-                    labelRowsPerPage: 'Số hàng hiển thị:', // Rows per page:
-                    firstAriaLabel: 'Trang đầu', // First Page
-                    firstTooltip: 'Trang đầu', // First Page
-                    previousAriaLabel: 'Trang trước', // Previous Page
-                    previousTooltip: 'Trang trước', // Previous Page
-                    nextAriaLabel: 'Trang tiếp', // Next Page
-                    nextTooltip: 'Trang tiếp', // Next Page
-                    lastAriaLabel: 'Trang cuối', // Last Page
-                    lastTooltip: 'Trang cuối', // Last Page
-                },
-                toolbar: {
-                    nRowsSelected: '{0} hàng được chọn', // {0} row(s) selected
-                    showColumnsTitle: 'Các cột hiển thị', // Show Columns
-                    showColumnsAriaLabel: 'Các cột hiển thị', // Show Columns
-                    exportTitle: 'Xuất file', // Export
-                    exportAriaLabel: 'Xuất file', // Export
-                    exportName: 'Xuấy file CSV', // Export as CSV
-                    searchTooltip: 'Tìm kiếm', // Search
-                },
-                header: {
-                    actions: 'Hành động', // Actions
-                },
-                body: {
-                    emptyDataSourceMessage: 'Không có dữ liệu', // No records to display
-                    filterRow: {
-                        filterTooltip: 'Bộ lọc', // Filter
-                    },
-                },
-            } }
-        />
-
         return (
             <GridContainer>
                 <Grid>
-                    <NavLink to="/quanly/quanlychung/dskhoa/">Danh sách khoa</NavLink> > { this.state.khoaData.id }.{ this.state.tenKhoa }
+                    <NavLink to="/quanly/quanlydoan/hoidongbaove/">Danh sách hội đồng</NavLink> > Hội đồng khoa { this.state.tenKhoa }
                 </Grid>
                 <Card>
                     <CardHeader color="primary">
@@ -422,11 +341,11 @@ class ShowKhoa extends Component {
                             />
                             <TextField
                                 id="standard-name"
-                                label="Email"
+                                label="Phòng"
                                 style={ { margin: 8 } }
                                 className={ classes.textField }
-                                value={ this.state.email }
-                                onChange={ this.handleChange('email') }
+                                value={ this.state.phong }
+                                onChange={ this.handleChange('phong') }
                                 margin="normal"
                                 disabled={ !this.state.isEditing }
                                 InputProps={ {
@@ -437,32 +356,24 @@ class ShowKhoa extends Component {
                                     shrink: true
                                 } }
                             />
+
                             <TextField
-                                id="standard-full-width"
-                                label="Mô tả"
+                                id="thoiGian"
+                                label="Thời gian"
                                 style={ { margin: 8 } }
-                                value={ this.state.moTa }
-                                onChange={ this.handleChange('moTa') }
-                                fullWidth
                                 margin="normal"
+                                InputProps={ {
+                                    defaultValue: this.state.thoiGian.substr(0, 10),
+                                    type: "date",
+                                    disableUnderline: !this.state.isEditing,
+                                    style: { "color": "black" },
+                                } }
+                                disabled={ !this.state.isEditing }
+                                fullwidth
                                 InputLabelProps={ {
                                     shrink: true
                                 } }
-                                InputProps={ {
-                                    disableUnderline: !this.state.isEditing,
-                                    style: { "color": "black" }
-                                } }
-                                disabled={ !this.state.isEditing }
                             />
-                            {
-                                this.state.isEditing ? (
-                                    <div style={{ float: "right", marginBottom:"10px"}}>
-                                        <Button color="primary" key="1" onClick={ this.handleDataChangeClick }>Lưu</Button>,
-                                        <Button key="2" onClick={ this.handleDataChangeAbortClick }>Hủy bỏ</Button>
-                                    </div>
-                                ) :
-                                    null
-                            }
                         </form>
                         <div className={ classes.root }>
                             <AppBar position="static" color="default">
@@ -474,14 +385,12 @@ class ShowKhoa extends Component {
                                     indicatorColor="primary"
                                     textColor="primary"
                                 >
-                                    <Tab label="Danh sách lớp" icon={ <PersonPinIcon /> } />
                                     <Tab label="Danh sách sinh viên" icon={ <PhoneIcon /> } />
                                     <Tab label="Danh sách giảng viên" icon={ <FavoriteIcon /> } />
                                 </Tabs>
                             </AppBar>
-                            { currentTabValue === 0 && <TabContainer>{ dslopTableComponent }</TabContainer> }
-                            { currentTabValue === 1 && <TabContainer>{ dssvTableComponent }</TabContainer> }
-                            { currentTabValue === 2 && <TabContainer>{ dsgvTableComponent }</TabContainer> }
+                            { currentTabValue === 0 && <TabContainer>{ dssvTableComponent }</TabContainer> }
+                            { currentTabValue === 1 && <TabContainer>{ dsgvTableComponent }</TabContainer> }
                         </div>
 
                     </CardBody>
@@ -491,4 +400,4 @@ class ShowKhoa extends Component {
     }
 }
 
-export default withStyles(styles)(ShowKhoa);
+export default withStyles(styles)(ShowHoiDong);
