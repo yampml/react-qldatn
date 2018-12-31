@@ -1,8 +1,13 @@
-import Dashboard from "layouts/Dashboard/Dashboard.jsx";
+import DashboardQuanLy from "layouts/Dashboard/DashboardQuanLy.jsx";
+import DashboardSinhVien from "layouts/Dashboard/DashboardSinhVien.jsx";
+import DashboardGiangVien from "layouts/Dashboard/DashboardGiangVien.jsx";
 
 const indexRoutes = 
     [
-        { path: "/", component: Dashboard },
+        { path: "/quanly", component: DashboardQuanLy },
+        { path: "/sinhvien", component: DashboardSinhVien },
+        { path: "/giangvien", component: DashboardGiangVien },
+        { path: "/", component: DashboardQuanLy },
     ];
 
 export default indexRoutes;

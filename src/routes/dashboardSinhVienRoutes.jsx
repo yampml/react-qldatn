@@ -23,14 +23,14 @@ import DSTaiKhoan from "views/DSTaiKhoan/DSTaiKhoan.jsx";
 
 const dashboardRoutes = [
   {
-    path: "/tongquan",
+    path: "/sinhvien/tongquan",
     sidebarName: "Tổng quan",
     navbarName: "TỔNG QUAN",
     icon: Dashboard,
     component: DashboardPage
   },
   {
-    path: "/user",
+    path: "/sinhvien/user",
     sidebarName: "User Profile",
     navbarName: "Profile",
     icon: Person,
@@ -40,20 +40,20 @@ const dashboardRoutes = [
     slash: true,
   },
   {
-    path: "/quanlytaikhoan",
+    path: "/sinhvien/quanlytaikhoan",
     sidebarName: "Quản lý tài khoản",
     navbarName: "Table List",
     icon: "content_paste",
     childLink: [
       {
-        path: "/quanlytaikhoan/taotaikhoan",
+        path: "/sinhvien/quanlytaikhoan/taotaikhoan",
         sidebarName: "Tạo tài khoản",
         navbarName: "Tạo tài khoản",
         icon: "content_paste",
         component: TaoTaiKhoan
       },
       {
-        path: "/quanlytaikhoan/danhsachtaikhoan",
+        path: "/sinhvien/quanlytaikhoan/danhsachtaikhoan",
         sidebarName: "Danh sách tài khoản",
         navbarName: "Danh sách tài khoản",
         icon: "content_paste",
@@ -62,7 +62,7 @@ const dashboardRoutes = [
     ]
   },
   {
-    path: "/quanlychung/dskhoa/:id",
+    path: "/sinhvien/quanlychung/dskhoa/:id",
     sidebarName: "Khoa",
     navbarName: "Khoa",
     icon: "content_paste",
@@ -70,34 +70,34 @@ const dashboardRoutes = [
     component: ShowKhoa
   },// de truoc dskhoa
   {
-    path: "/quanlychung",
+    path: "/sinhvien/quanlychung",
     sidebarName: "Quản lý chung",
     navbarName: "Table List",
     icon: "content_paste",
     childLink: [
       {
-        path: "/quanlychung/dskhoa",
+        path: "/sinhvien/quanlychung/dskhoa",
         sidebarName: "Khoa",
         navbarName: "Khoa",
         icon: "content_paste",
         component: DanhSachKhoa
       },
       {
-        path: "/quanlychung/dslop",
+        path: "/sinhvien/quanlychung/dslop",
         sidebarName: "Lớp",
         navbarName: "Lớp",
         icon: "content_paste",
         component: TableList
       },
       {
-        path: "/quanlychung/dsgv",
+        path: "/sinhvien/quanlychung/dsgv",
         sidebarName: "Giảng viên",
         navbarName: "Giảng viên",
         icon: "content_paste",
         component: TableList
       },
       {
-        path: "/quanlychung/dssv",
+        path: "/sinhvien/quanlychung/dssv",
         sidebarName: "Sinh viên",
         navbarName: "Sinh viên",
         icon: "content_paste",
@@ -106,34 +106,34 @@ const dashboardRoutes = [
     ]
   },
   {
-    path: "/quanlydoan",
+    path: "/sinhvien/quanlydoan",
     sidebarName: "Quản lý đồ án",
     navbarName: "Quản lý đồ án",
     icon: "content_paste",
     childLink: [
       {
-        path: "/doan",
+        path: "/sinhvien/doan",
         sidebarName: "Quản lý đồ án",
         navbarName: "Quản lý đồ án",
         icon: LibraryBooks,
         component: Typography
       },
       {
-        path: "/phancong",
+        path: "/sinhvien/phancong",
         sidebarName: "Phân công hướng dẫn",
         navbarName: "Phân công hướng dẫn",
         icon: BubbleChart,
         component: null
       },
       {
-        path: "/tiendo",
+        path: "/sinhvien/tiendo",
         sidebarName: "Quản lý tiến độ",
         navbarName: "Quản lý tiến độ",
         icon: BubbleChart,
         component: QuanLyTienDo
       },
       {
-        path: "/hoidongbaove",
+        path: "/sinhvien/hoidongbaove",
         sidebarName: "Hội đồng bảo vệ",
         navbarName: "Hội đồng bảo vệ",
         icon: BubbleChart,
@@ -142,31 +142,28 @@ const dashboardRoutes = [
     ]
   },
 
-
-
-
   {
-    path: "/maps",
+    path: "/sinhvien/maps",
     sidebarName: "Maps",
     navbarName: "Map",
     icon: LocationOn,
     component: Maps
   },
   {
-    path: "/notifications",
+    path: "/sinhvien/notifications",
     sidebarName: "Notifications",
     navbarName: "Notifications",
     icon: Notifications,
     component: NotificationsPage
   },
   {
-    path: "/login",
+    path: "/sinhvien/login",
     sidebarName: "Login",
     navbarName: "Login plz",
     icon: Notifications,
     component: Auth,
   },
-  { redirect: true, path: "/", to: "/tongquan", navbarName: "Redirect" }
+  { redirect: true, path: "/", to: "/sinhvien/tongquan", navbarName: "Redirect" }
 ];
 
 export default dashboardRoutes;
