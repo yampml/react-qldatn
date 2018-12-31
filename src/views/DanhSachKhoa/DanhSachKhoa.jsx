@@ -117,7 +117,7 @@ class DanhSachKhoa extends Component {
                   icon: 'open_in_new',
                   tooltip: 'Chi tiết',
                   onClick: (event, rowData) => {
-                    this.props.history.push("/quanlychung/dskhoa/1")
+                    this.props.history.push("/quanly/quanlychung/dskhoa/1")
                   },
                 },
                 {

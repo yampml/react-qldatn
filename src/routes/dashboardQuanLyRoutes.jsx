@@ -10,7 +10,6 @@ import Notifications from "@material-ui/icons/Notifications";
 import DashboardPage from "views/Dashboard/Dashboard.jsx";
 import UserProfile from "views/UserProfile/UserProfile.jsx";
 import TableList from "views/TableList/TableList.jsx";
-import Typography from "views/Typography/Typography.jsx";
 import Maps from "views/Maps/Maps.jsx";
 import NotificationsPage from "views/Notifications/Notifications.jsx";
 import Auth from "../views/Auth/Auth.jsx";
@@ -22,6 +21,9 @@ import DSTaiKhoan from "views/DSTaiKhoan/DSTaiKhoan.jsx";
 import DSDoAn from "views/QuanLyDoAn/DSDoAn.jsx";
 import ShowDoAn from "views/QuanLyDoAn/ShowDoAn.jsx";
 import ShowBaoCao from "views/QuanLyDoAn/BaoCao/ShowBaoCao.jsx";
+import DSHoiDong from "views/QuanLyDoAn/DSHoiDong.jsx";
+import ShowHoiDong from "views/QuanLyDoAn/ShowHoiDong.jsx";
+
 const dashboardRoutes = [
   {
     path: "/quanly/tongquan",
@@ -88,6 +90,14 @@ const dashboardRoutes = [
     component: ShowDoAn
   },// de truoc dsdoan
   {
+    path: "/quanly/quanlydoan/hoidongbaove/:id",
+    sidebarName: "Hội đồng bảo vệ",
+    navbarName: "Hội đồng bảo vệ",
+    icon: "content_paste",
+    hide: true,
+    component: ShowHoiDong
+  },// de truoc dsdoan
+  {
     path: "/quanly/quanlychung",
     sidebarName: "Quản lý chung",
     navbarName: "Table List",
@@ -148,7 +158,7 @@ const dashboardRoutes = [
         sidebarName: "Hội đồng bảo vệ",
         navbarName: "Hội đồng bảo vệ",
         icon: BubbleChart,
-        component: null
+        component: DSHoiDong
       },
     ]
   },
