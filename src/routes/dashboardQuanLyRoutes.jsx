@@ -16,8 +16,6 @@ import Auth from "../views/Auth/Auth.jsx";
 import QuanLyTienDo from "../views/QuanLyTienDo/QuanLyTienDo.jsx";
 import DanhSachKhoa from "views/DanhSachKhoa/DanhSachKhoa.jsx";
 import ShowKhoa from "views/DanhSachKhoa/show/ShowKhoa.jsx";
-import DanhSachLop from "views/DanhSachLop/DanhSachLop.jsx";
-import ShowLop from "views/DanhSachLop/show/ShowLop.jsx";
 import TaoTaiKhoan from "views/DSTaiKhoan/TaoTaiKhoan.jsx";
 import DSTaiKhoan from "views/DSTaiKhoan/DSTaiKhoan.jsx";
 import DSDoAn from "views/QuanLyDoAn/DSDoAn.jsx";
@@ -74,14 +72,6 @@ const dashboardRoutes = [
     hide: true,
     component: ShowKhoa
   },// de truoc dskhoa
-    {
-    path: "/quanly/quanlychung/dslop/:id",
-    sidebarName: "Lop",
-    navbarName: "Lop",
-    icon: "content_paste",
-    hide: true,
-    component: ShowLop
-  },
 
   {
     path: "/quanly/quanlydoan/doan/:id/baocao/:idbaocao",
@@ -125,7 +115,7 @@ const dashboardRoutes = [
         sidebarName: "Lớp",
         navbarName: "Lớp",
         icon: "content_paste",
-        component: DanhSachLop
+        component: TableList
       },
       {
         path: "/quanly/quanlychung/dsgv",
