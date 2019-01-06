@@ -26,7 +26,6 @@ function TabContainer(props) {
     );
 }
 
-
 const styles = {
     cardCategoryWhite: {
         "&,& a,& a:hover,& a:focus": {
