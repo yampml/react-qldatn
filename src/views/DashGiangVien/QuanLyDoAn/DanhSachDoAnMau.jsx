@@ -48,21 +48,21 @@ class DanhSachDoAn extends Component {
     this.classes = this.props.classes;
     this.state = {
       cardTable: {
-        cardHeader: "Danh sách đồ án đang hướng dẫn",
-        cardHeaderSub: "Mục này dùng để quản lý danh sách đồ án",
+        cardHeader: "Danh sách đồ án mẫu cho sinh viên lựa chọn",
+        cardHeaderSub: "Mục này dùng để quản lý danh sách đồ án mẫu",
         dsKhoaTable: {
           table: {
             header: [
               { title: 'STT', field: 'id' },
               { title: 'Tên Đề Tài', field: 'tenDeTai' },
-              { title: 'Tên Sinh Viên', field: 'tenSV', },
+              { title: 'Mô Tả Đề Tài', field: 'moTa', },
               { title: 'Số sinh viên tối đa', field: 'soSV', },
             ],
             data: [
-              { tenDeTai: "Xây dựng website PHP", tenSV: "Bão,Phương",soSV:"2" },
-              { tenDeTai: "Xây dựng website Java", tenSV: "Vân Anh,Nguyên",soSV:"2" },
-              { tenDeTai: "Xây dựng website JS", tenSV: "Anh Bảng,Hoàng",soSV:"2" },
-              { tenDeTai: "Xây dựng website PHP", tenSV: "Định An",soSV:"1" },
+              { tenDeTai: "Xây dựng website PHP", moTa: "Đồ án xây dựng web bán hàng",soSV:"1" },
+              { tenDeTai: "Xây dựng website Java", moTa: "Đồ án xây dựng hệ thống thư viện",soSV:"2" },
+              { tenDeTai: "Xây dựng website JS", moTa: "Đồ án xây dựng hệ thống thanh toán qua QRCODE",soSV:"2" },
+              { tenDeTai: "Xây dựng website PHP", moTa: "Đồ án xây dựng web bán hàng",soSV:"1" },
             ]
           },
         },
@@ -97,10 +97,10 @@ class DanhSachDoAn extends Component {
               { this.state.cardTable.cardHeaderSub }
             </p>
           </div>
-          {/* <IconButton style={ { float: "right" } } className={ this.classes.cardTitleWhite } onClick={ this.toggleModalNewKhoaOpen }>
+          <IconButton style={ { float: "right" } } className={ this.classes.cardTitleWhite } onClick={ this.toggleModalNewKhoaOpen }>
             <span style={ { paddingRight: "10px", fontSize: "20px" } }>Tạo thêm đề tài mẫu</span>
             <AddBoxIcon fontSize="inherit" />
-          </IconButton> */}
+          </IconButton>
         </CardHeader>
         <CardBody>
           <MaterialTable
@@ -114,14 +114,14 @@ class DanhSachDoAn extends Component {
                   icon: 'open_in_new',
                   tooltip: 'Chi tiết',
                   onClick: (event, rowData) => {
-                    this.props.history.push("/quanly/quanlydoan/tiendo")
+                    this.props.history.push("/giangvien/tiendo/1")
                   },
                 },
                 {
                   icon: 'delete',
                   tooltip: 'Xóa',
                   onClick: (event, rowData) => {
-                    alert('Bạn có chắc chắn xóa trường này')
+                    alert('You clicked user ' + rowData.tenKhoa)
                   },
                 }
               ]
