@@ -19,6 +19,7 @@ import DanhSachKhoa from "views/DanhSachKhoa/DanhSachKhoa.jsx";
 import ShowKhoa from "views/DanhSachKhoa/show/ShowKhoa.jsx";
 import TaoTaiKhoan from "views/DSTaiKhoan/TaoTaiKhoan.jsx";
 import DSTaiKhoan from "views/DSTaiKhoan/DSTaiKhoan.jsx";
+import DanhSachDoAn from "views/DashGiangVien/QuanLyDoAn/DanhSachDoAn.jsx";
 
 
 const dashboardRoutes = [
@@ -116,7 +117,7 @@ const dashboardRoutes = [
         sidebarName: "Quản lý đồ án",
         navbarName: "Quản lý đồ án",
         icon: LibraryBooks,
-        component: Typography
+        component: DanhSachDoAn
       },
       {
         path: "/giangvien/phancong",
