@@ -7,7 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 import TextField from '@material-ui/core/TextField';
 // core components
-
+import GridItem from "components/Grid/GridItem.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import Button from "components/CustomButtons/Button.jsx";
 import Card from "components/Card/Card.jsx";
@@ -23,6 +23,10 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
 import Typography from '@material-ui/core/Typography';
 import MaterialTable from 'material-table';
+
+
+import DualListBox from 'react-dual-listbox';
+import 'react-dual-listbox/lib/react-dual-listbox.css';
 function TabContainer(props) {
     return (
         <Typography component="div" >
@@ -125,9 +129,31 @@ class ShowKhoa extends Component {
             tenKhoa: "Công nghệ thông tin",
             moTa: "Lorem ipsum dolor nuclear missile flashbang grenade m4 silence b51 say hetshot",
         },
+
         email: "cntt@ledinhsinh.edu.vn",
         tenKhoa: "Công nghệ thông tin",
         moTa: "Lorem ipsum dolor nuclear missile flashbang grenade m4 silence b51 say hetshot",
+
+
+        selectedLop: ['one'],
+        optionsLop: [
+            { value: 'one', label: 'Option One' },
+            { value: 'two', label: 'Option Two' },
+        ],
+
+        selectedSinhVien: ['one'],
+        optionsSinhVien: [
+            { value: 'one', label: 'Option One' },
+            { value: 'two', label: 'Option Two' },
+        ],
+
+        selectedGiangVien: ['one'],
+        optionsGiangVien: [
+            { value: 'one', label: 'Option One' },
+            { value: 'two', label: 'Option Two' },
+        ],
+
+
         currentTabValue: 0,
         isEditing: false,
 
@@ -455,8 +481,97 @@ class ShowKhoa extends Component {
                                 disabled={ !this.state.isEditing }
                             />
                             {
+                                this.state.isEditing ?
+                                    <div>
+                                        <GridContainer>
+                                            <GridItem xs={ 12 } sm={ 12 } md={ 12 }>
+                                                <h5>Sửa danh sách Lớp</h5>
+                                                <DualListBox
+                                                    options={ this.state.optionsLop }
+                                                    selected={ this.state.selectedLop }
+                                                    onChange={ (selectedLop) => {
+                                                        this.setState({ selectedLop });
+                                                    } }
+                                                    icons={ {
+                                                        moveLeft: <Icon>chevron_left</Icon>,
+                                                        moveAllLeft: [
+                                                            <Icon key={ 1 }>chevron_left</Icon>,
+                                                            <Icon key={ 2 }>chevron_left</Icon>
+                                                        ],
+                                                        moveRight: <Icon>chevron_right</Icon>,
+                                                        moveAllRight: [
+                                                            <Icon key={ 1 }>chevron_right</Icon>,
+                                                            <Icon key={ 2 }>chevron_right</Icon>
+                                                        ],
+                                                        // moveDown: <span className="fa fa-chevron-down" />,
+                                                        // moveUp: <span className="fa fa-chevron-up" />,
+                                                    } }
+                                                />
+                                            </GridItem>
+                                        </GridContainer>
+
+                                        <GridContainer>
+                                            <GridItem xs={ 12 } sm={ 12 } md={ 12 }>
+                                                <h5>Sửa danh sách Sinh viên</h5>
+                                                <DualListBox
+                                                    options={ this.state.optionsSinhVien }
+                                                    selected={ this.state.selectedSinhVien }
+                                                    onChange={ (selectedSinhVien) => {
+                                                        this.setState({ selectedSinhVien });
+                                                    } }
+                                                    icons={ {
+                                                        moveLeft: <Icon>chevron_left</Icon>,
+                                                        moveAllLeft: [
+                                                            <Icon key={ 1 }>chevron_left</Icon>,
+                                                            <Icon key={ 2 }>chevron_left</Icon>
+                                                        ],
+                                                        moveRight: <Icon>chevron_right</Icon>,
+                                                        moveAllRight: [
+                                                            <Icon key={ 1 }>chevron_right</Icon>,
+                                                            <Icon key={ 2 }>chevron_right</Icon>
+                                                        ],
+                                                        // moveDown: <span className="fa fa-chevron-down" />,
+                                                        // moveUp: <span className="fa fa-chevron-up" />,
+                                                    } }
+                                                />
+                                            </GridItem>
+                                        </GridContainer>
+
+                                        <GridContainer>
+                                            <GridItem xs={ 12 } sm={ 12 } md={ 12 }>
+                                                <h5>Sửa danh sách giảng viên</h5>
+                                                <DualListBox
+                                                    options={ this.state.optionsGiangVien }
+                                                    selected={ this.state.selectedGiangVien }
+                                                    onChange={ (selectedGiangVien) => {
+                                                        this.setState({ selectedGiangVien });
+                                                    } }
+                                                    icons={ {
+                                                        moveLeft: <Icon>chevron_left</Icon>,
+                                                        moveAllLeft: [
+                                                            <Icon key={ 1 }>chevron_left</Icon>,
+                                                            <Icon key={ 2 }>chevron_left</Icon>
+                                                        ],
+                                                        moveRight: <Icon>chevron_right</Icon>,
+                                                        moveAllRight: [
+                                                            <Icon key={ 1 }>chevron_right</Icon>,
+                                                            <Icon key={ 2 }>chevron_right</Icon>
+                                                        ],
+                                                        // moveDown: <span className="fa fa-chevron-down" />,
+                                                        // moveUp: <span className="fa fa-chevron-up" />,
+                                                    } }
+                                                />
+                                            </GridItem>
+                                        </GridContainer>
+                                    </div>
+                                    : null
+                            }
+
+
+
+                            {
                                 this.state.isEditing ? (
-                                    <div style={{ float: "right", marginBottom:"10px"}}>
+                                    <div style={ { float: "right", marginBottom: "10px" } }>
                                         <Button color="primary" key="1" onClick={ this.handleDataChangeClick }>Lưu</Button>,
                                         <Button key="2" onClick={ this.handleDataChangeAbortClick }>Hủy bỏ</Button>
                                     </div>
@@ -464,25 +579,29 @@ class ShowKhoa extends Component {
                                     null
                             }
                         </form>
-                        <div className={ classes.root }>
-                            <AppBar position="static" color="default">
-                                <Tabs
-                                    value={ currentTabValue }
-                                    onChange={ this.handleTabValueChange }
-                                    scrollable
-                                    scrollButtons="on"
-                                    indicatorColor="primary"
-                                    textColor="primary"
-                                >
-                                    <Tab label="Danh sách lớp" icon={ <PersonPinIcon /> } />
-                                    <Tab label="Danh sách sinh viên" icon={ <PhoneIcon /> } />
-                                    <Tab label="Danh sách giảng viên" icon={ <FavoriteIcon /> } />
-                                </Tabs>
-                            </AppBar>
-                            { currentTabValue === 0 && <TabContainer>{ dslopTableComponent }</TabContainer> }
-                            { currentTabValue === 1 && <TabContainer>{ dssvTableComponent }</TabContainer> }
-                            { currentTabValue === 2 && <TabContainer>{ dsgvTableComponent }</TabContainer> }
-                        </div>
+
+                        {
+                            !this.state.isEditing ?
+                                <div className={ classes.root }>
+                                    <AppBar position="static" color="default">
+                                        <Tabs
+                                            value={ currentTabValue }
+                                            onChange={ this.handleTabValueChange }
+                                            scrollable
+                                            scrollButtons="on"
+                                            indicatorColor="primary"
+                                            textColor="primary"
+                                        >
+                                            <Tab label="Danh sách lớp" icon={ <PersonPinIcon /> } />
+                                            <Tab label="Danh sách sinh viên" icon={ <PhoneIcon /> } />
+                                            <Tab label="Danh sách giảng viên" icon={ <FavoriteIcon /> } />
+                                        </Tabs>
+                                    </AppBar>
+                                    { currentTabValue === 0 && <TabContainer>{ dslopTableComponent }</TabContainer> }
+                                    { currentTabValue === 1 && <TabContainer>{ dssvTableComponent }</TabContainer> }
+                                    { currentTabValue === 2 && <TabContainer>{ dsgvTableComponent }</TabContainer> }
+                                </div> : null
+                        }
 
                     </CardBody>
                 </Card>

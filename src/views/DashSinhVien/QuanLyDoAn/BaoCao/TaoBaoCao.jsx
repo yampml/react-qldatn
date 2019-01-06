@@ -58,7 +58,7 @@ const styles = {
 };
 
 
-class ShowBaoCao extends Component {
+class TaoBaoCao extends Component {
     constructor(props) {
         super(props);
 
@@ -66,9 +66,9 @@ class ShowBaoCao extends Component {
             mssv: "102150256",
             tenSV: "Lê Đình Xinh",
             tenDeTai: "Xây dựng XXX",
-            noiDungCongViecDaThucHien: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At multis malis affectus. Quem quidem vos, cum improbis poenam proponitis, inpetibilem facitis, cum sapientem semper boni plus habere vultis, tolerabilem. Atqui reperies, inquit, in hoc quidem pertinacem; Quamquam id quidem, infinitum est in hac urbe; Sed venio ad inconstantiae crimen, ne saepius dicas me aberrare; Quamquam id quidem licebit iis existimare, qui legerint. Cui Tubuli nomen odio non est? Duo Reges: constructio interrete. Idemne potest esse dies saepius, qui semel fuit? Dic in quovis conventu te omnia facere, ne doleas. Tu enim ista lenius, hic Stoicorum more nos vexat. Atque hoc loco similitudines eas, quibus illi uti solent, dissimillimas proferebas. Nam memini etiam quae nolo, oblivisci non possum quae volo. Sed venio ad inconstantiae crimen, ne saepius dicas me aberrare",
-            noiDungCongViecSeThucHien: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. At multis malis affectus. Quem quidem vos, cum improbis poenam proponitis, inpetibilem facitis, cum sapientem semper boni plus habere vultis, tolerabilem. Atqui reperies, inquit, in hoc quidem pertinacem; Quamquam id quidem, infinitum est in hac urbe; Sed venio ad inconstantiae crimen, ne saepius dicas me aberrare; Quamquam id quidem licebit iis existimare, qui legerint. Cui Tubuli nomen odio non est? Duo Reges: constructio interrete. Idemne potest esse dies saepius, qui semel fuit? Dic in quovis conventu te omnia facere, ne doleas. Tu enim ista lenius, hic Stoicorum more nos vexat. Atque hoc loco similitudines eas, quibus illi uti solent, dissimillimas proferebas. Nam memini etiam quae nolo, oblivisci non possum quae volo. Sed venio ad inconstantiae crimen, ne saepius dicas me aberrare",
-            isEditing: false,
+            noiDungCongViecDaThucHien: "",
+            noiDungCongViecSeThucHien: "",
+            isEditing: true,
         }
 
     }
@@ -171,9 +171,13 @@ class ShowBaoCao extends Component {
                             <GridContainer>
                                 <GridItem xs={ 12 } sm={ 12 } md={ 4 }>
                                     <h5 style={ { margin: 8 } }>File liên quan</h5>
-                                    <Link style={ { margin: 8 } } to="#"><Icon>attach_file</Icon> File 1</Link><br />
-                                    <Link style={ { margin: 8 } } to="#"><Icon>attach_file</Icon> File 2</Link><br />
-                                    <Link style={ { margin: 8 } } to="#"><Icon>attach_file</Icon> File 3</Link>
+
+                                    {
+                                        this.state.isEditing ? (<Button color="primary">Upload file</Button>) : null
+                                    }
+                                    {/* <Link style={ { margin: 8 } } to="/quanly/quanlydoan/doan/1/baocao/1"><Icon>attach_file</Icon> File 1</Link><br />
+                                    <Link style={ { margin: 8 } } to="/quanly/quanlydoan/doan/1/baocao/2"><Icon>attach_file</Icon> File 2</Link><br />
+                                    <Link style={ { margin: 8 } } to="/quanly/quanlydoan/doan/1/baocao/3"><Icon>attach_file</Icon> File 3</Link> */}
                                 </GridItem>
                             </GridContainer>
 
@@ -182,7 +186,7 @@ class ShowBaoCao extends Component {
                                     <div style={ { float: "right", marginBottom: "10px" } }>
                                         <Button color="primary">Xác nhận</Button>
                                         <Button color="primary" key="1" onClick={ this.handleDataChangeClick }>Lưu</Button>
-                                        <Button key="2" onClick={ this.handleDataChangeAbortClick }>Hủy bỏ</Button>
+                                        {/* <Button key="2" onClick={ this.handleDataChangeAbortClick }>Hủy bỏ</Button> */ }
                                         <p>Lưu ý: Không thể sửa đổi báo cáo sau khi đã Xác nhận!</p>
                                     </div>
                                 ) :
@@ -198,4 +202,4 @@ class ShowBaoCao extends Component {
     }
 }
 
-export default withStyles(styles)(ShowBaoCao);
+export default withStyles(styles)(TaoBaoCao);

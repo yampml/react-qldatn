@@ -8,7 +8,7 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import Notifications from "@material-ui/icons/Notifications";
 // core components/views
 import DashboardPage from "views/Dashboard/Dashboard.jsx";
-import UserProfile from "views/DashGiangVien/UserProfile/UserProfile.jsx";
+// import UserProfile from "views/DashGiangVien/UserProfile/UserProfile.jsx";
 import TableList from "views/TableList/TableList.jsx";
 import Typography from "views/Typography/Typography.jsx";
 import Maps from "views/Maps/Maps.jsx";
@@ -28,13 +28,13 @@ const dashboardRoutes = [
     icon: Dashboard,
     component: DashboardPage
   },
-  {
-    path: "/giangvien/user",
-    sidebarName: "User Profile",
-    navbarName: "Profile",
-    icon: Person,
-    component: UserProfile
-  },
+  // {
+  //   path: "/giangvien/user",
+  //   sidebarName: "User Profile",
+  //   navbarName: "Profile",
+  //   icon: Person,
+  //   component: UserProfile
+  // },
   {
     slash: true,
   },
