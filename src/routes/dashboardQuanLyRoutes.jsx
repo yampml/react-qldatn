@@ -26,6 +26,8 @@ import ShowBaoCao from "views/QuanLyDoAn/BaoCao/ShowBaoCao.jsx";
 import DSHoiDong from "views/QuanLyDoAn/DSHoiDong.jsx";
 import ShowHoiDong from "views/QuanLyDoAn/ShowHoiDong.jsx";
 import DanhSachGiangVien from "../views/DanhSachGiangVien/DanhSachGiangVien.jsx";
+import DanhSachSinhVien from "../views/DanhSachSinhVien/DanhSachSinhVien.jsx";
+import ShowSinhVien from "../views/DanhSachSinhVien/show/ShowSinhVien.jsx";
 
 const dashboardRoutes = [
   {
@@ -74,6 +76,15 @@ const dashboardRoutes = [
     icon: "content_paste",
     hide: true,
     component: ShowKhoa
+  },// de truoc dskhoa
+
+  {
+    path: "/quanly/quanlychung/dssv/:id",
+    sidebarName: "Khoa",
+    navbarName: "Khoa",
+    icon: "content_paste",
+    hide: true,
+    component: ShowSinhVien
   },// de truoc dskhoa
     {
     path: "/quanly/quanlychung/dslop/:id",
@@ -140,7 +151,7 @@ const dashboardRoutes = [
         sidebarName: "Sinh viên",
         navbarName: "Sinh viên",
         icon: "content_paste",
-        component: TableList
+        component: DanhSachSinhVien
       },
     ]
   },
