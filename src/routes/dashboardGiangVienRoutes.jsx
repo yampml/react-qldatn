@@ -15,6 +15,8 @@ import Maps from "views/Maps/Maps.jsx";
 import NotificationsPage from "views/Notifications/Notifications.jsx";
 import Auth from "../views/Auth/Auth.jsx";
 import QuanLyTienDo from "../views/QuanLyTienDo/QuanLyTienDo.jsx";
+import DanhSachDoAn from "views/DashGiangVien/QuanLyDoAn/DanhSachDoAn.jsx";
+import DanhSachDoAnMau from "../views/DashGiangVien/QuanLyDoAn/DanhSachDoAnMau.jsx";
 
 
 
@@ -54,21 +56,14 @@ const dashboardRoutes = [
         sidebarName: "Quản lý đồ án",
         navbarName: "Quản lý đồ án",
         icon: LibraryBooks,
-        component: Typography
-      },
-      {
-        path: "/giangvien/tiendo",
-        sidebarName: "Quản lý tiến độ",
-        navbarName: "Quản lý tiến độ",
-        icon: BubbleChart,
-        component: QuanLyTienDo
+        component: DanhSachDoAn
       },
       {
         path: "/giangvien/danhsachdoanmau",
         sidebarName: "Danh sách đồ án mẫu",
         navbarName: "Danh sách đồ án mẫu",
         icon: BubbleChart,
-        component: null
+        component: DanhSachDoAnMau
       },
     ]
   },
