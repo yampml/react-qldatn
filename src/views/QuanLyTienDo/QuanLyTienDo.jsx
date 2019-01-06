@@ -33,12 +33,6 @@ const styles = {
             color: "#FFFFFF"
         }
     },
-    fab: {
-        margin: theme.spacing.unit,
-      },
-      extendedIcon: {
-        marginRight: theme.spacing.unit,
-      },
     cardTitleWhite: {
         color: "#FFFFFF",
         marginTop: "0px",
@@ -209,9 +203,6 @@ class BaoCaoTienDo extends Component {
                             <p>
                                 Ngày Kết Thúc {dot.ngayKetThuc.substr(0, 10)}
                             </p>
-                            <Fab color="secondary" aria-label="Edit" className={classes.fab}>
-        <Icon>edit_icon</Icon>
-      </Fab>
                         </TimelineItem>
                     </Timeline>
                 );
