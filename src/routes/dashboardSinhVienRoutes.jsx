@@ -10,6 +10,7 @@ import QuanLyTienDo from "../views/QuanLyTienDo/QuanLyTienDo.jsx";
 import DangKy from "views/DashSinhVien/DangKy/DangKy.jsx";
 import ShowDoAn from "views/DashSinhVien/QuanLyDoAn/ShowDoAn.jsx";
 import ShowBaoCao from "views/DashSinhVien/QuanLyDoAn/BaoCao/ShowBaoCao.jsx";
+import TaoBaoCao from "views/DashSinhVien/QuanLyDoAn/BaoCao/TaoBaoCao.jsx";
 
 const dashboardRoutes = [
   {
@@ -36,6 +37,14 @@ const dashboardRoutes = [
     icon: BubbleChart,
     hide: true,
     component: QuanLyTienDo
+  },
+  {
+    path: "/sinhvien/doan/chitiet/baocao/taobaocao",
+    sidebarName: "Đồ án",
+    navbarName: "Đồ án",
+    icon: BubbleChart,
+    hide: true,
+    component: TaoBaoCao
   },
   {
     path: "/sinhvien/doan/chitiet/baocao/:id",

@@ -6,11 +6,15 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
-
 import CardBody from "components/Card/CardBody.jsx";
 
+
+import IconButton from '@material-ui/core/IconButton';
+import AddBoxIcon from '@material-ui/icons/AddBox';
 import Typography from '@material-ui/core/Typography';
 import MaterialTable from 'material-table';
+
+import NewHoiDongModal from './NewHoiDongModal.jsx';
 function TabContainer(props) {
     return (
         <Typography component="div" >
@@ -74,19 +78,20 @@ class DSHoiDong extends Component {
                     { title: 'Thời gian', field: 'thoiGian' },
                 ],
                 data: [
-                    { tenKhoa: 1, slsv: 15, slgv: 6, phong: "H101", thoiGian: new Date().toJSON().substr(0,10) },
-                    { tenKhoa: 1, slsv: 12, slgv: 6, phong: "H102", thoiGian: new Date().toJSON().substr(0,10) },
-                    { tenKhoa: 1, slsv: 11, slgv: 6, phong: "H103", thoiGian: new Date().toJSON().substr(0,10) },
-                    { tenKhoa: 2, slsv: 14, slgv: 6, phong: "H104", thoiGian: new Date().toJSON().substr(0,10) },
-                    { tenKhoa: 2, slsv: 12, slgv: 6, phong: "H105", thoiGian: new Date().toJSON().substr(0,10) },
-                    { tenKhoa: 3, slsv: 13, slgv: 6, phong: "H106", thoiGian: new Date().toJSON().substr(0,10) },
-                    { tenKhoa: 3, slsv: 15, slgv: 6, phong: "H107", thoiGian: new Date().toJSON().substr(0,10) },
-                    { tenKhoa: 4, slsv: 16, slgv: 6, phong: "H108", thoiGian: new Date().toJSON().substr(0,10) },
-                    { tenKhoa: 4, slsv: 17, slgv: 6, phong: "H109", thoiGian: new Date().toJSON().substr(0,10) },
-                    { tenKhoa: 5, slsv: 11, slgv: 6, phong: "H110", thoiGian: new Date().toJSON().substr(0,10) },
+                    { tenKhoa: 1, slsv: 15, slgv: 6, phong: "H101", thoiGian: new Date().toJSON().substr(0, 10) },
+                    { tenKhoa: 1, slsv: 12, slgv: 6, phong: "H102", thoiGian: new Date().toJSON().substr(0, 10) },
+                    { tenKhoa: 1, slsv: 11, slgv: 6, phong: "H103", thoiGian: new Date().toJSON().substr(0, 10) },
+                    { tenKhoa: 2, slsv: 14, slgv: 6, phong: "H104", thoiGian: new Date().toJSON().substr(0, 10) },
+                    { tenKhoa: 2, slsv: 12, slgv: 6, phong: "H105", thoiGian: new Date().toJSON().substr(0, 10) },
+                    { tenKhoa: 3, slsv: 13, slgv: 6, phong: "H106", thoiGian: new Date().toJSON().substr(0, 10) },
+                    { tenKhoa: 3, slsv: 15, slgv: 6, phong: "H107", thoiGian: new Date().toJSON().substr(0, 10) },
+                    { tenKhoa: 4, slsv: 16, slgv: 6, phong: "H108", thoiGian: new Date().toJSON().substr(0, 10) },
+                    { tenKhoa: 4, slsv: 17, slgv: 6, phong: "H109", thoiGian: new Date().toJSON().substr(0, 10) },
+                    { tenKhoa: 5, slsv: 11, slgv: 6, phong: "H110", thoiGian: new Date().toJSON().substr(0, 10) },
                 ]
             },
-        }
+        },
+        modalNewHoiDongOpen: false,
     }
 
 
@@ -129,6 +134,13 @@ class DSHoiDong extends Component {
             tableHead: tableHead,
             tableData: tableData
         }
+    }
+
+    toggleModalNewHoiDongOpen = () => {
+        this.setState((prevState) => {
+            return { modalNewHoiDongOpen: !prevState.modalNewHoiDongOpen }
+        })
+        console.log(this.state.modalNewHoiDongOpen);
     }
 
     render() {
@@ -207,12 +219,20 @@ class DSHoiDong extends Component {
                 <Card>
                     <CardHeader color="primary">
                         <h4 className={ classes.cardTitleWhite }>DANH SÁCH HỘI ĐỒNG</h4>
+
+                        <IconButton style={ { float: "right" } } className={ classes.cardTitleWhite } onClick={ this.toggleModalNewHoiDongOpen }>
+                            <span style={ { paddingRight: "10px", fontSize: "20px" } }>Tạo hội đồng</span>
+                            <AddBoxIcon fontSize="inherit" />
+                        </IconButton>
                     </CardHeader>
                     <CardBody>
                         { dstkTableComponent }
                     </CardBody>
                 </Card>
+
+                <NewHoiDongModal open={ this.state.modalNewHoiDongOpen } onClose={ this.toggleModalNewHoiDongOpen } />
             </GridContainer>
+
         );
     }
 }

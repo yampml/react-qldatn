@@ -331,7 +331,7 @@ class DangKy extends Component {
                 </GridItem>
                 <GridItem xs={ 12 } sm={ 12 } md={ 4 }>
                     <FormControl style={ { margin: 8 } } fullWidth className={ classes.formControl }>
-                        <InputLabel fullWidth shrink>GVHD</InputLabel>
+                        <InputLabel fullWidth shrink>Chọn Giảng viên hướng dẫn mong muốn</InputLabel>
                         <Select
                             value={ this.state.gvhd }
                             onChange={ this.handleChangeInput('gvhd') }
@@ -464,7 +464,7 @@ class DangKy extends Component {
             <GridContainer>
                 <Card>
                     <CardHeader color="primary">
-                        <h4 className={ classes.cardTitleWhite }>QUẢN LÝ TIẾN ĐỘ</h4>
+                        <h4 className={ classes.cardTitleWhite }>ĐĂNG KÝ ĐỒ ÁN</h4>
                         <div style={ { float: "right" } }>
                             {
                                 !this.state.isEditing ? (

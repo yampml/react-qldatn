@@ -268,23 +268,18 @@ class ShowDoAn extends Component {
                                 <GridItem xs={ 12 } sm={ 12 } md={ 4 }>
                                     <Link style={ { margin: 8 } } to="/sinhvien/doan/chitiet/baocao/1"><Icon>done</Icon> Báo cáo lần 1</Link><br />
                                     <Link style={ { margin: 8 } } to="/sinhvien/doan/chitiet/baocao/2"><Icon>done</Icon> Báo cáo lần 2</Link><br />
-                                    <Link style={ { margin: 8 } } to="/sinhvien/doan/chitiet/baocao/3"><Icon>done</Icon> Báo cáo lần 3</Link>
+                                    <Link style={ { margin: 8 } } to="/sinhvien/doan/chitiet/baocao/taobaocao"><Icon>arrow_right_alt</Icon> Viết báo cáo lần 3!</Link>
                                 </GridItem>
                             </GridContainer>
                             {
                                 this.state.isEditing ? (
                                     <div style={ { float: "right", marginBottom: "10px" } }>
-                                        <Button color="primary" key="1" onClick={ this.handleDataChangeClick }>Lưu</Button>,
-                                        <Button key="2" onClick={ this.handleDataChangeAbortClick }>Hủy bỏ</Button>
+                                        <Button color="primary" onClick={ this.handleDataChangeClick }>Lưu</Button>
+                                        <Button onClick={ this.handleDataChangeAbortClick }>Hủy bỏ</Button>
                                     </div>
                                 ) :
                                     null
                             }
-                            <GridContainer>
-                                <GridItem xs={ 12 } sm={ 12 } md={ 4 }>
-                                    <Button color="primary">Xác nhận</Button>
-                                </GridItem>
-                            </GridContainer>
                         </form>
 
 
