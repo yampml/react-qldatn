@@ -85,7 +85,7 @@ class UserProfile extends Component {
           <GridItem xs={ 12 } sm={ 12 } md={ 8 }>
             <Card>
               <CardHeader color="primary">
-                <h4 className={ classes.cardTitleWhite }>Thông tin tài khoản cá nhân</h4>
+                <h4 className={ classes.cardTitleWhite }>MSSV: 102150269</h4>
                 <div style={ { float: "right" } }>
                   {
                     !this.state.isEditing ? (
@@ -386,7 +386,7 @@ class UserProfile extends Component {
                   I love Rick Owens’ bed design but the back is...
                 </p>
                 <Button color="primary" round>
-                  Upload new Avatar
+                    Đổi ảnh đại diện
                 </Button>
               </CardBody>
             </Card>

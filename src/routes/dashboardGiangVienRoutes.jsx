@@ -10,6 +10,9 @@ import Notifications from "@material-ui/icons/Notifications";
 import DashboardPage from "views/Dashboard/Dashboard.jsx";
 import UserProfile from "views/DashGiangVien/UserProfile/UserProfile.jsx";
 import DanhSachSinhVien from "../views/DashGiangVien/QuanLySinhVien/DanhSachSinhVien.jsx";
+import UserProfile from "views/DashGiangVien/UserProfile/UserProfile.jsx";
+import TableList from "views/TableList/TableList.jsx";
+import Typography from "views/Typography/Typography.jsx";
 import Maps from "views/Maps/Maps.jsx";
 import NotificationsPage from "views/Notifications/Notifications.jsx";
 import Auth from "../views/Auth/Auth.jsx";
@@ -29,13 +32,13 @@ const dashboardRoutes = [
     icon: Dashboard,
     component: DashboardPage
   },
-  {
-    path: "/giangvien/user",
-    sidebarName: "User Profile",
-    navbarName: "Profile",
-    icon: Person,
-    component: UserProfile
-  },
+   {
+     path: "/giangvien/user",
+     sidebarName: "User Profile",
+     navbarName: "Profile",
+     icon: Person,
+     component: UserProfile
+   },
   {
     slash: true,
   },

@@ -5,9 +5,10 @@ import Modal from '@material-ui/core/Modal';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
 
-import DualListBox from 'react-dual-listbox';
 import 'react-dual-listbox/lib/react-dual-listbox.css';
+
 import Typography from '@material-ui/core/Typography';
+
 import GridItem from "components/Grid/GridItem.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
 import CustomInput from "components/CustomInput/CustomInput.jsx";
@@ -17,12 +18,23 @@ import CardHeader from "components/Card/CardHeader.jsx";
 import CardBody from "components/Card/CardBody.jsx";
 import CardFooter from "components/Card/CardFooter.jsx";
 
+
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import PhoneIcon from '@material-ui/icons/Phone';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
+
+import DualListBox from 'react-dual-listbox';
+import 'react-dual-listbox/lib/react-dual-listbox.css';
+function TabContainer(props) {
+    return (
+        <Typography component="div" >
+            { props.children }
+        </Typography>
+    );
+}
 
 
 function getModalStyle() {
@@ -34,13 +46,6 @@ function getModalStyle() {
         left: `${left}%`,
         transform: `translate(-${top}%, -${left}%)`,
     };
-}
-function TabContainer(props) {
-    return (
-        <Typography component="div" >
-            { props.children }
-        </Typography>
-    );
 }
 
 const styles = theme => ({
@@ -74,12 +79,6 @@ class SimpleModal extends Component {
 
         currentTabValue: 0,
 
-        selectedLop: ['one'],
-        optionsLop: [
-            { value: 'one', label: 'Option One' },
-            { value: 'two', label: 'Option Two' },
-        ],
-
         selectedSinhVien: ['one'],
         optionsSinhVien: [
             { value: 'one', label: 'Option One' },
@@ -93,9 +92,11 @@ class SimpleModal extends Component {
         ],
     };
 
+
     handleTabValueChange = (event, currentTabValue) => {
         this.setState({ currentTabValue });
     };
+
 
     handleChangeText = name => event => {
         this.setState({
@@ -105,37 +106,7 @@ class SimpleModal extends Component {
 
     render() {
         const { classes } = this.props;
-
         const { currentTabValue } = this.state;
-        const listboxLop = (
-            <GridContainer>
-                <GridItem xs={ 12 } sm={ 12 } md={ 12 }>
-                    <h5>Thêm Lớp</h5>
-                    <DualListBox
-                        options={ this.state.optionsLop }
-                        selected={ this.state.selectedLop }
-                        onChange={ (selectedLop) => {
-                            this.setState({ selectedLop });
-                        } }
-                        icons={ {
-                            moveLeft: <Icon>chevron_left</Icon>,
-                            moveAllLeft: [
-                                <Icon key={ 1 }>chevron_left</Icon>,
-                                <Icon key={ 2 }>chevron_left</Icon>
-                            ],
-                            moveRight: <Icon>chevron_right</Icon>,
-                            moveAllRight: [
-                                <Icon key={ 1 }>chevron_right</Icon>,
-                                <Icon key={ 2 }>chevron_right</Icon>
-                            ],
-                            // moveDown: <span className="fa fa-chevron-down" />,
-                            // moveUp: <span className="fa fa-chevron-up" />,
-                        } }
-                    />
-                </GridItem>
-            </GridContainer>
-        );
-
         const listboxSV = (
             <GridContainer>
                 <GridItem xs={ 12 } sm={ 12 } md={ 12 }>
@@ -192,6 +163,7 @@ class SimpleModal extends Component {
                 </GridItem>
             </GridContainer>
         );
+
         return (
             <div>
                 <Modal
@@ -212,13 +184,13 @@ class SimpleModal extends Component {
                                 </div>
                                 <Card>
                                     <CardHeader color="primary">
-                                        <h5 style={ { padding: "0px", margin: "0px" } }>TẠO KHOA MỚI</h5>
+                                        <h5 style={ { padding: "0px", margin: "0px" } }>TẠO HỘI ĐỒNG</h5>
                                     </CardHeader>
                                     <CardBody>
                                         <GridContainer>
                                             <GridItem xs={ 12 } sm={ 12 } md={ 6 }>
                                                 <CustomInput
-                                                    labelText="Tên Khoa"
+                                                    labelText="Khoa"
                                                     id="tenKhoa"
                                                     formControlProps={ {
                                                         fullWidth: true
@@ -227,7 +199,7 @@ class SimpleModal extends Component {
                                             </GridItem>
                                             <GridItem xs={ 12 } sm={ 12 } md={ 6 }>
                                                 <CustomInput
-                                                    labelText="Email liên hệ"
+                                                    labelText="Phòng"
                                                     id="email-address"
                                                     formControlProps={ {
                                                         fullWidth: true
@@ -238,25 +210,10 @@ class SimpleModal extends Component {
                                         <GridContainer>
                                             <GridItem xs={ 12 } sm={ 12 } md={ 4 }>
                                                 <CustomInput
-                                                    labelText="Số điện thoại liên hệ"
+                                                    labelText="Thời gian"
                                                     id="city"
                                                     formControlProps={ {
                                                         fullWidth: true
-                                                    } }
-                                                />
-                                            </GridItem>
-                                        </GridContainer>
-                                        <GridContainer>
-                                            <GridItem xs={ 12 } sm={ 12 } md={ 12 }>
-                                                <CustomInput
-                                                    labelText="Giới thiệu:"
-                                                    id="about"
-                                                    formControlProps={ {
-                                                        fullWidth: true
-                                                    } }
-                                                    inputProps={ {
-                                                        multiline: true,
-                                                        rows: 5
                                                     } }
                                                 />
                                             </GridItem>
@@ -274,17 +231,16 @@ class SimpleModal extends Component {
                                                             indicatorColor="primary"
                                                             textColor="primary"
                                                         >
-                                                            <Tab label="Danh sách lớp" icon={ <PersonPinIcon /> } />
                                                             <Tab label="Danh sách sinh viên" icon={ <PhoneIcon /> } />
                                                             <Tab label="Danh sách giảng viên" icon={ <FavoriteIcon /> } />
                                                         </Tabs>
                                                     </AppBar>
-                                                    { currentTabValue === 0 && <TabContainer>{ listboxLop }</TabContainer> }
-                                                    { currentTabValue === 1 && <TabContainer>{ listboxSV }</TabContainer> }
-                                                    { currentTabValue === 2 && <TabContainer>{ listboxGV }</TabContainer> }
+                                                    { currentTabValue === 0 && <TabContainer>{ listboxSV }</TabContainer> }
+                                                    { currentTabValue === 1 && <TabContainer>{ listboxGV }</TabContainer> }
                                                 </div>
                                             </GridItem>
                                         </GridContainer>
+
                                     </CardBody>
                                     <CardFooter>
                                         <Button color="primary">Lưu</Button>

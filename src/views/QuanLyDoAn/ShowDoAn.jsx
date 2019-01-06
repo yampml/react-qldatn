@@ -267,8 +267,8 @@ class ShowDoAn extends Component {
                             </GridContainer>
                             <GridContainer>
                                 <GridItem xs={ 12 } sm={ 12 } md={ 4 }>
-                                    <Link style={ { margin: 8 } } to="/quanly/quanlydoan/doan/1/baocao/1"><Icon>done</Icon> Báo cáo lần 1</Link><br />
-                                    <Link style={ { margin: 8 } } to="/quanly/quanlydoan/doan/1/baocao/2"><Icon>done</Icon> Báo cáo lần 2</Link><br />
+                                    <Link style={ { margin: 8 } } to="/quanly/quanlydoan/doan/1/baocao/1"><Icon>done</Icon> Báo cáo lần 1 (Đã duyệt)</Link><br />
+                                    <Link style={ { margin: 8 } } to="/quanly/quanlydoan/doan/1/baocao/2"><Icon>done</Icon> Báo cáo lần 2 (GVHD Đã duyệt)</Link><br />
                                     <Link style={ { margin: 8 } } to="/quanly/quanlydoan/doan/1/baocao/3"><Icon>done</Icon> Báo cáo lần 3</Link>
                                 </GridItem>
                             </GridContainer>
