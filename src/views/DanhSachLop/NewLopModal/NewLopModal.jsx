@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-
+import TextField from "@material-ui/core/TextField";
 import Input from '@material-ui/core/Input';
 import Modal from '@material-ui/core/Modal';
 import IconButton from '@material-ui/core/IconButton';
@@ -10,7 +10,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from "@material-ui/core/MenuItem";
 import GridItem from "components/Grid/GridItem.jsx";
 import GridContainer from "components/Grid/GridContainer.jsx";
-import CustomInput from "components/CustomInput/CustomInput.jsx";
+
 import Button from "components/CustomButtons/Button.jsx";
 import Card from "components/Card/Card.jsx";
 import CardHeader from "components/Card/CardHeader.jsx";
@@ -19,8 +19,8 @@ import CardFooter from "components/Card/CardFooter.jsx";
 import FormControl from '@material-ui/core/FormControl';
 
 function getModalStyle() {
-    const top = 55;
-    const left = 56;
+    const top = 50;
+    const left = 50;
 
     return {
         top: `${top}%`,
@@ -32,7 +32,7 @@ function getModalStyle() {
 const styles = theme => ({
     paper: {
         position: 'absolute',
-        width: theme.spacing.unit * 170,
+        width: theme.spacing.unit * 145,
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
         padding: theme.spacing.unit * 1,
@@ -40,12 +40,8 @@ const styles = theme => ({
     container: {
         display: 'flex',
         flexWrap: 'wrap',
-    },
-    textField: {
-        marginLeft: theme.spacing.unit,
-        marginRight: theme.spacing.unit,
-        width: 200,
-    },
+    }, 
+
     dense: {
         marginTop: 10,
     },
@@ -60,17 +56,18 @@ const styles = theme => ({
 }
 );
 
-class SimpleModal extends Component {
+class NewLopModal extends Component {
     state = {
-        name: 'nda',
-        
+        khoa:"CNTT",
+        listkhoa: ["CNTT","Điện tử","Hóa","Điện tử- Viễn Thông", "Xây dựng"       
+        ], 
+        Hinhthuc:"Chính quy",
+        listHinhthuc: ["Chính quy","Liên thông- Chính quy"],         
     };
 
-    handleChangeText = name => event => {
-        this.setState({
-            [name]: event.target.value,
-        });
-    };
+    handleChange = event => {
+        this.setState({ [event.target.name]: event.target.value });
+      };
     
     render() {
         const { classes } = this.props;
@@ -99,52 +96,94 @@ class SimpleModal extends Component {
                                     </CardHeader>
                                     <CardBody>
                                         <GridContainer>
-                                            <GridItem xs={12} sm={12} md={5}>
-                                                <CustomInput
-                                                    labelText="Tên Lớp"
-                                                    id="tenLớp"
-                                                    formControlProps={{
-                                                        fullWidth: true
-                                                    }}
-                                                />
-                                            </GridItem>
-                                            <GridItem xs={12} sm={12} md={5}>
-                                                <CustomInput
-                                                    labelText="Khoa quản lí"
-                                                    id="khoa"
-                                                    formControlProps={{
-                                                        fullWidth: true
-                                                    }}
-                                                />
-                                            </GridItem>
+                                        
+                                        <GridItem xs={ 12 } sm={ 12 } md={ 5 }>
+                                        <TextField
+                                            id="standard-name"
+                                            label="Tên Lớp"
+                                            style={ { margin: 8 } }
+                                            className={ classes.textField }
+                                            margin="normal"
+                                            InputProps={ {
+                                                style: { "color": "black" }
+                                            } }
+                                            InputLabelProps={ {
+                                                shrink: true
+                                            } }
+                                            fullWidth
+                                        />
+                                    </GridItem>
+                                    <GridItem xs={ 12 } sm={ 12 } md={ 5 }>
+                                        <TextField
+                                            id="standard-name"
+                                            label="Số lượng sinh viên"
+                                            style={ { margin: 8 } }
+                                            className={ classes.textField }
+                                            value={ this.state.tenTaiKhoan }
+            
+                                            margin="normal"
+                                            InputProps={ {
+
+                                                style: { "color": "black" }
+                                            } }
+                                            InputLabelProps={ {
+                                                shrink: true
+                                            } }
+                                            fullWidth
+                                        />
+                                    </GridItem>
                                         </GridContainer>
                                         <GridContainer>
-                                            <GridItem xs={12} sm={12} md={5}>
-                                                <CustomInput
-                                                    labelText="Số lượng sinh viên"
-                                                    id="soluongSV"
-                                                    formControlProps={{
-                                                        fullWidth: true
-                                                    }}
-                                                />
-                                            </GridItem>
-                                            <GridItem xs={12} sm={12} md={5}>
-                                                <CustomInput
-                                                    labelText="Hình thức"
-                                                    id="hình thức"
-                                                    formControlProps={{
-                                                        fullWidth: true
-                                                    }}
-                                                />
-                                            </GridItem>
-                                        </GridContainer>
+                                        <GridItem xs={ 12 } sm={ 12 } md={ 5 }>
+                                        <FormControl style={ { margin: 8, minWidth: 120, } } fullwidth className={ classes.formControl }>
+                                            <InputLabel fullwidth shrink>Khoa</InputLabel>
+                                            <Select
+                                                 value={this.state.khoa }
+                                                 onChange={ this.handleChange }
+                                                 inputProps={{
+                                                    name: 'khoa'
+                                                  }}
+                                                fullwidth
+                                            >
+                                                {
+                                                    this.state.listkhoa.map((khoa, index) => {
+                                                        return (
+                                                            <MenuItem value={ khoa }>{ khoa}</MenuItem>
+                                                        )
+                                                    })
+                                                }
+                                            </Select>
+                                        </FormControl>
+                                    </GridItem>
+                                    <GridItem xs={ 12 } sm={ 12 } md={ 5 }>
+                                        <FormControl style={ { margin: 8, minWidth: 120, } } fullwidth className={ classes.formControl }>
+                                            <InputLabel fullwidth shrink>Hình thức</InputLabel>
+                                            <Select
+                                                 value={this.state.Hinhthuc }
+                                                 onChange={ this.handleChange }
+                                                 inputProps={{
+                                                    name: 'Hinhthuc'
+                                                  }}
+                                                fullwidth
+                                            >
+                                                {
+                                                    this.state.listHinhthuc.map((ht, index) => {
+                                                        return (
+                                                            <MenuItem value={ ht }>{ht}</MenuItem>
+                                                        )
+                                                    })
+                                                }
+                                            </Select>
+                                        </FormControl>
+                                    </GridItem>
+                                    </GridContainer>
                                     </CardBody>
                                     <CardFooter>
                                         <Button color="primary">Lưu</Button>
                                     </CardFooter>
                                 </Card>
                             </GridItem>
-                            
+
                         </GridContainer>
                         <SimpleModalWrapped />
                     </div>
@@ -155,7 +194,7 @@ class SimpleModal extends Component {
     }
 }
 
-// We need an intermediary variable for handling the recursive nesting.
-const SimpleModalWrapped = withStyles(styles)(SimpleModal);
+
+const SimpleModalWrapped = withStyles(styles)(NewLopModal);
 
 export default SimpleModalWrapped;
