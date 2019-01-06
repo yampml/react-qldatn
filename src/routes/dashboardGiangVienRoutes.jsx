@@ -9,15 +9,16 @@ import Notifications from "@material-ui/icons/Notifications";
 // core components/views
 import DashboardPage from "views/Dashboard/Dashboard.jsx";
 import UserProfile from "views/DashGiangVien/UserProfile/UserProfile.jsx";
-import TableList from "views/TableList/TableList.jsx";
-import Typography from "views/Typography/Typography.jsx";
+import DanhSachSinhVien from "../views/DashGiangVien/QuanLySinhVien/DanhSachSinhVien.jsx";
 import Maps from "views/Maps/Maps.jsx";
 import NotificationsPage from "views/Notifications/Notifications.jsx";
 import Auth from "../views/Auth/Auth.jsx";
 import QuanLyTienDo from "../views/QuanLyTienDo/QuanLyTienDo.jsx";
 import DanhSachDoAn from "views/DashGiangVien/QuanLyDoAn/DanhSachDoAn.jsx";
 import DanhSachDoAnMau from "../views/DashGiangVien/QuanLyDoAn/DanhSachDoAnMau.jsx";
-
+import ShowSinhVien from "../views/DashGiangVien/QuanLySinhVien/ShowSinhVien/ShowSinhVien.jsx";
+import ShowDoAn from "../views/DashGiangVien/QuanLySinhVien/ShowDoAn.jsx";
+import ShowBaoCao from "../views/DashGiangVien/QuanLySinhVien/ShowBaoCao.jsx";
 
 
 const dashboardRoutes = [
@@ -39,11 +40,36 @@ const dashboardRoutes = [
     slash: true,
   },
   {
+    path: "/giangvien/quanlysinhvien/:id/baocao/:id",
+    sidebarName: "Báo Cáo",
+    navbarName: "Báo Cáo",
+    icon: "content_paste",
+    hide: true,
+    component: ShowBaoCao
+  }
+  ,
+  {
+    path: "/giangvien/quanlysinhvien/:id/baocao",
+    sidebarName: "Đồ Án",
+    navbarName: "Đồ Án",
+    icon: "content_paste",
+    hide: true,
+    component: ShowDoAn
+  },
+  {
+    path: "/giangvien/quanlysinhvien/:id",
+    sidebarName: "Quản lí sinh viên",
+    navbarName: "Quản lí sinh viên",
+    icon: "content_paste",
+    hide: true,
+    component: ShowSinhVien
+  },
+  {
     path: "/giangvien/quanlysinhvien",
     sidebarName: "Quản lí sinh viên",
     navbarName: "Quản lí sinh viên",
-    icon: Person,
-    component: TableList
+    icon: "content_paste",
+    component: DanhSachSinhVien
   },
   {
     path: "/giangvien/quanlydoan",
