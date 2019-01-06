@@ -186,13 +186,6 @@ const dashboardRoutes = [
   },
 
   {
-    path: "/quanly/maps",
-    sidebarName: "Maps",
-    navbarName: "Map",
-    icon: LocationOn,
-    component: Maps
-  },
-  {
     path: "/quanly/notifications",
     sidebarName: "Notifications",
     navbarName: "Notifications",
@@ -200,7 +193,7 @@ const dashboardRoutes = [
     component: NotificationsPage
   },
   {
-    path: "/quanly/login",
+    path: "/login",
     sidebarName: "Login",
     navbarName: "Login plz",
     icon: Notifications,

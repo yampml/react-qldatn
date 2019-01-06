@@ -46,7 +46,7 @@ const styles = theme => ({
 });
 
 class Auth extends Component {
-
+    
     render() {
         const { classes } = this.props;
         return (
@@ -61,11 +61,11 @@ class Auth extends Component {
                     </Typography>
                     <form className={classes.form}>
                         <FormControl margin="normal" required fullWidth>
-                            <InputLabel htmlFor="email">Email Address</InputLabel>
+                            <InputLabel htmlFor="email">MSSV</InputLabel>
                             <Input id="email" name="email" autoComplete="email" autoFocus />
                         </FormControl>
                         <FormControl margin="normal" required fullWidth>
-                            <InputLabel htmlFor="password">Password</InputLabel>
+                            <InputLabel htmlFor="password">Mật khẩu</InputLabel>
                             <Input name="password" type="password" id="password" autoComplete="current-password" />
                         </FormControl>
                         <FormControlLabel
@@ -73,11 +73,12 @@ class Auth extends Component {
                             label="Remember me"
                         />
                         <Button
-                            type="submit"
+                            // type="submit"
                             fullWidth
                             variant="contained"
                             color="primary"
                             className={classes.submit}
+                            onClick = {() => {this.props.history.push("/quanly")}}
                         >
                             Sign in
                         </Button>

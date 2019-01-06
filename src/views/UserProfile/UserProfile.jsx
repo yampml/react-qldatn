@@ -322,7 +322,7 @@ class UserProfile extends Component {
                   I love Rick Owens’ bed design but the back is...
                 </p>
                 <Button color="primary" round>
-                  Upload new Avatar
+                  Đổi ảnh đại diện
                 </Button>
               </CardBody>
             </Card>
