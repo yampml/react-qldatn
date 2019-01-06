@@ -77,7 +77,7 @@ class ShowKhoa extends Component {
                         { title: 'SĐT', field: 'sdt' },//, type: 'numeric' 
                     ],
                     data: [
-                        { tenSV: "Lê Đình Sinh", lop: "15TCLC2", sdt: "0969123456" },
+                        { tenSV: "Lê Đình Sinh1", lop: "15TCLC2", sdt: "0969123456" },
                         { tenSV: "Lê Đình Làng", lop: "15TCLC3", sdt: "0969123456" },
                         { tenSV: "Lê Đình Tùng", lop: "15TCLC4", sdt: "0969123456" },
                         { tenSV: "Lê Đình Núi", lop: "15TCLC2", sdt: "0969123456" },
